@@ -32,11 +32,8 @@ def encrypt(value="0"):
     return final_hash
 
 def registation(username="admin", password="admin"):  # Registation Default is admin,admin. 
-    
     # Need to check if username exists; If it does return error code (-1) . 
     # # As the DB has not been made - Using a Txt file 
-
-    
     accounts = readtextfile('Database/account.txt')
     for each in accounts:
         if each[0].lower() == username.lower():
@@ -44,7 +41,7 @@ def registation(username="admin", password="admin"):  # Registation Default is a
     
     hash_value = encrypt(password)
 
-    value = f'{username},{hash_value}'
+    value = f'\n{username},{hash_value}'
     f = open('Database/account.txt', 'a+')
     f.write(value)
     f.close()
@@ -61,7 +58,7 @@ def login(username="admin", password="admin"):  # this the login subroutine
     state = False
 
     for each in accounts:
-        if each[0].lower() == username:
+        if each[0].lower() == username.lower():
             state = True
 
             break
@@ -70,8 +67,8 @@ def login(username="admin", password="admin"):  # this the login subroutine
         return 0
     
     hash_value = encrypt(password)
-
-    if hash_value == each[1]:
+    
+    if hash_value == each[1] or (hash_value+'\n') == each[1]:
         return 1
     else:
         return -1 
