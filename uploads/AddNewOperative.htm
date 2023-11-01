@@ -1,0 +1,3334 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>AddNewOperative</title>
+    <meta name="viewport" content="width=device-width" />
+    <!-- CSS inc bootstrap -->
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/font-awesome/css/all.css" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/font-awesome/css/v4-shims.css" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/bootstrap-toggle.min.css" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/jquery-ui.min.css" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/jquery.fancybox.css">
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/jquery.fancybox-buttons.css">
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/jquery.fancybox-thumbs.css">
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/jquery.timepicker.css">
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/multi-level-dropdowns.css">
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/bootstrap-slider.css" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/css/Site.css" />
+    <link type="text/css" rel="stylesheet" href="/Frontend/dist/styles/dx.min.css" />
+
+
+    
+    <script src="/Frontend/dist/modules/layout.module.js"></script>
+    
+    <script src="/Frontend/js/jquery-2.2.4.js"></script>
+    <!-- form builder api setup partial needs to be first (after jquery), because it overrides some of our functions-->
+    
+    <script src="/Frontend/js/bootstrap.js"></script>
+    <script src="/Frontend/js/Shared/timeSpan.js"></script>
+    <script src="/Frontend/js/Shared/validation.js"></script>
+    <script src="/Frontend/js/bootstrap-toolkit.js"></script>
+    <script src="/Frontend/js/bootstrap-toggle.min.js"></script>
+    <script src="/Frontend/js/Shared/bootstrap-slider.js"></script>
+    <script src="/Frontend/js/Shared/jQueryExtensions.js"></script>
+    <script src="/Frontend/js/Shared/jquery.cookie.js"></script>
+    <script src="/Frontend/js/Shared/url.js"></script>
+    <script src="/Frontend/js/Shared/jquery-ui.min.js"></script>
+    <script src="/Frontend/js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="/Frontend/js/Shared/jquery-ui-i18n.min.js"></script>
+    <script src="/Frontend/js/jsrender.min.js"></script>
+    <script src="/Frontend/js/Shared/fancyBox/jquery.fancybox.pack.js"></script>
+    <script src="/Frontend/js/Shared/fancyBox/jquery.mousewheel.pack.js"></script>
+    <script src="/Frontend/js/Shared/fancyBox/jquery.fancybox-buttons.js"></script>
+    <script src="/Frontend/js/Shared/fancyBox/jquery.fancybox-media.js"></script>
+    <script src="/Frontend/js/Shared/fancyBox/jquery.fancybox-thumbs.js"></script>
+    <script src="/Frontend/js/Shared/sorttable.js"></script>
+    <script src="/Frontend/js/Shared/js-webshim/minified/polyfiller.js"></script>
+    <script src="/Frontend/js/Shared/js-webshim/dev/shims/includes.js"></script>
+    <script src="/Frontend/js/jquery.timepicker.min.js"></script>
+    <script src="/Frontend/js/Shared/bootstrap-slider.js"></script>
+    <script src="/Frontend/js/moment-with-locales.min.js"></script>
+    <script nonce="6QITJ/jdy6bab4ikXjRW">
+        (function ($, viewport) {
+            $(document).ready(function () {
+                viewportGlobal = viewport;
+            });
+        })(jQuery, ResponsiveBootstrapToolkit);
+    
+        webshim.setOptions('forms-ext', {});
+        webshim.polyfill('forms forms-ext');
+        $(function () {
+            $(".fancybox").fancybox({
+                type: 'iframe',
+                iframe: { preload: false },
+                width: '90%',
+                height: '90%',
+                closeClick: true
+            });
+        });
+        var viewportGlobal;
+        
+        
+        
+        function resizeWells(a, b) {
+            // initial calc of heights
+            if (viewportGlobal.is('>=md')) {
+                $(a).css('min-height', 0);
+                $(b).css('min-height', 0);
+                // find largest of top wells
+                if ($(a).height() > $(b).height()) {
+                    $(b).css('min-height', (parseInt($(a).height()) + 40).toString() + 'px');
+                }
+                else {
+                    $(a).css('min-height', (parseInt($(b).height()) + 40).toString() + 'px');
+                }
+            }
+        }
+
+        function updateQueryStringParameter (uri, key, value) {
+            var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+            var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+            if (uri.match(re)) {
+                return uri.replace(re, '$1' + key + "=" + value + '$2');
+            }
+            else {
+                return uri + separator + key + "=" + value;
+            }
+        }
+    </script>
+    
+    <!-- site functions (must be last)-->
+    <script src="/Frontend/js/Shared/siteFunctions.js"></script>
+    <script src="/Frontend/Scripts/jszip.min.js"></script>
+    <script src="/Frontend/dist/scripts/dx.min.js"></script>
+</head>
+
+<body>
+
+<input name="__RequestVerificationToken" type="hidden" value="psTYoeapiHxCSAqqG06Ieyw2Vl_nx2OHHkatH8gkellWvsSbazOhfEAscqnuRpVl-dgQ2zzH4gcNpK8o-6p5vmCOsy41" />
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    function setupFormsForAntiForgery() {
+        $("input[name=__RequestVerificationToken]").addClass("specialCharactersField");
+        $("form").submit(function(e) {
+            e.preventDefault();
+            const self = this;
+
+            $('<input />').attr('type', 'hidden')
+                .attr('name', "__RequestVerificationToken")
+                .attr('value', $('[name=__RequestVerificationToken]').val())
+                .appendTo($(self));
+            self.submit();
+        });
+    }
+    
+    function setupAjaxForAntiForgery() {
+        var isAbsoluteURI = new RegExp('^(?:[a-z]+:)?//', 'i');
+        $.ajaxSetup({
+            beforeSend: function(xhr) {
+                if (!isAbsoluteURI.test(this.url)) {
+                    //only add header to relative URLs
+                    xhr.setRequestHeader(
+                        '__RequestVerificationToken',
+                        $('[name=__RequestVerificationToken]').val()
+                    );
+                }
+            }
+        });
+    }
+    
+    $(function() {
+        setupFormsForAntiForgery();
+        setupAjaxForAntiForgery();
+    });
+</script>
+
+
+<!-- navbar -->
+<style type="text/css">
+    .scrollable {
+        overflow-y: auto;
+        max-height: 65vh;
+    }
+</style>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" id="nvMainNav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="/Frontend/Image/dslogo200.png" id="imgLogo" /></a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li>
+                <a>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <i class="fa fa-lg fa-building"></i> 
+                        <span id="spnSiteName"></span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var getLoggedInSiteAndSetAsCurrentSiteCntrl = '/Frontend/Site/GetLoggedInSiteAndSetAsCurrentSite';
+
+    function setLoggedInSite() {
+        $.get(getLoggedInSiteAndSetAsCurrentSiteCntrl).done(function(data) {
+            $("#spnSiteName").text(data.SiteName);
+            if (window.setLoggedInSiteCompleteHook)
+                window.setLoggedInSiteCompleteHook();
+            $(document).trigger("siteIdLoadedEvent");
+        });
+    }
+
+    $(function() {
+        setLoggedInSite();
+    });
+</script><script nonce="6QITJ/jdy6bab4ikXjRW">
+    const culture = 'en-GB';
+    const country = 'gb';
+    const language = 'en';
+</script>
+<div class="container" id="divView">
+    
+
+<!--front end controls-->
+<script src="/Frontend/js/TimeAttendance/addNewOperative.js?885-SystemTemplateNET"></script>
+<script src="/Frontend/Areas/Goldbeck/js/TimeAttendance/addNewOperative.js?885-SystemTemplateNET"></script>
+
+<style>
+    .no-padding {
+        padding: 0;
+    }
+
+    .find-address-button {
+        height: 32px;
+        border: none;
+    }
+
+    .find-address-message {
+        padding-bottom: 6px;
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+
+
+<div id="divOperativeDetails" style="display: block">
+    <div class="row">
+            <p class="noWell">Add New Operative</p>
+    </div>
+
+    <!--top wells-->
+    <div class="row">
+
+        <!--#region operative-->
+        <!--top left well-->
+        <div class="col-md-6 well" id="divTopLeftWell">
+            <h4>
+                <small class="text-muted">Operative</small>
+            </h4>
+            <hr />
+
+            <!--first name-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">First Name</span>
+                <input type="text" id="txtFirstName" class="form-control required isLast" name="First Name"
+                       onkeyup="validate(this, this.value, 'BlackList')" maxlength="50"
+                       onblur="validate(this, this.value, 'BlackList')"
+                       value="" />
+                <i id="txtFirstNameOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                <i id="txtFirstNameWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                <i id="txtFirstNameError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+            </div>
+
+            <!--surname-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Surname</span>
+                <input type="text" id="txtSurname" class="form-control required isLast" name="Surname"  
+                       onkeyup="validate(this, this.value, 'BlackList')" maxlength="50"
+                       onblur="validate(this, this.value, 'BlackList')"
+                       value="" />
+                <i id="txtSurnameOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                <i id="txtSurnameWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                <i id="txtSurnameError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+            </div>
+
+            <!--reporting to-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Reporting To</span>
+                <select class="form-control requiredDD" id="ddCompanyRep" name="Reporting To" onchange="checkCompany(this)">
+                    <option value="0">Select Company</option>
+                            <option value="42">ABS FLOORS </option>
+                            <option value="22">Abus Crane systems ltd</option>
+                            <option value="25">ADBly</option>
+                            <option value="32">Adexi</option>
+                            <option value="23">Afford scaffolding</option>
+                            <option value="43">Amphibian Scaffolding</option>
+                            <option value="12">Bentley</option>
+                            <option value="20">CBS</option>
+                            <option value="17">Concast</option>
+                            <option value="21">Concept Advanced Technology Ltd</option>
+                            <option value="26">Construction services MF</option>
+                            <option value="38">CTR Construction</option>
+                            <option value="1">DATASCOPE</option>
+                            <option value="33">EMK</option>
+                            <option value="30">Gatwick Airport</option>
+                            <option value="10">Goldbeck</option>
+                            <option value="40">In2grate</option>
+                            <option value="18">ISD</option>
+                            <option value="29">Kinglifting</option>
+                            <option value="41">Kingsley Roofing</option>
+                            <option value="15">MR Industrial</option>
+                            <option value="14">NDsafety Group</option>
+                            <option value="13">On powwerr</option>
+                            <option value="34">Piomar</option>
+                            <option value="44">PJ Sealants</option>
+                            <option value="16">Quadro</option>
+                            <option value="45">rotec security </option>
+                            <option value="24">SJ Workforce</option>
+                            <option value="31">Soils Ltd</option>
+                            <option value="39">Structual &amp; Weld Testing Services</option>
+                            <option value="28">T J HALL</option>
+                            <option value="11">T R Civils</option>
+                            <option value="19">UK Membranes</option>
+                            <option value="9">VISITOR</option>
+                            <option value="27">WS Transport</option>
+                </select>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="btnAddCompanyModal">Add New</button>
+                </span>
+                <script nonce="6QITJ/jdy6bab4ikXjRW">
+                    $("#btnAddCompanyModal").on("click", function () { openAddCompanyModal(false) });
+                </script>
+            </div>
+
+            <!--direct employer-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Direct Employer</span>
+                    <select class="form-control requiredDD" id="ddCompanyDir" name="Direct Employer" onchange="checkCompany(this)">
+                        <option value="0">Select Company...</option>
+                                <option value="42">ABS FLOORS </option>
+                                <option value="22">Abus Crane systems ltd</option>
+                                <option value="25">ADBly</option>
+                                <option value="32">Adexi</option>
+                                <option value="23">Afford scaffolding</option>
+                                <option value="43">Amphibian Scaffolding</option>
+                                <option value="12">Bentley</option>
+                                <option value="20">CBS</option>
+                                <option value="17">Concast</option>
+                                <option value="21">Concept Advanced Technology Ltd</option>
+                                <option value="26">Construction services MF</option>
+                                <option value="38">CTR Construction</option>
+                                <option value="1">DATASCOPE</option>
+                                <option value="33">EMK</option>
+                                <option value="30">Gatwick Airport</option>
+                                <option value="10">Goldbeck</option>
+                                <option value="40">In2grate</option>
+                                <option value="18">ISD</option>
+                                <option value="29">Kinglifting</option>
+                                <option value="41">Kingsley Roofing</option>
+                                <option value="15">MR Industrial</option>
+                                <option value="14">NDsafety Group</option>
+                                <option value="13">On powwerr</option>
+                                <option value="34">Piomar</option>
+                                <option value="44">PJ Sealants</option>
+                                <option value="16">Quadro</option>
+                                <option value="45">rotec security </option>
+                                <option value="24">SJ Workforce</option>
+                                <option value="31">Soils Ltd</option>
+                                <option value="39">Structual &amp; Weld Testing Services</option>
+                                <option value="28">T J HALL</option>
+                                <option value="11">T R Civils</option>
+                                <option value="19">UK Membranes</option>
+                                <option value="9">VISITOR</option>
+                                <option value="27">WS Transport</option>
+                    </select>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" onclick="openAddCompanyModal(false)">
+                        Add New
+                    </button>
+                </span>
+            </div>
+
+            <!--trade-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Trade</span>
+                <select class="form-control requiredDD" id="ddTrade" name="Trade">
+                    <option value="0">Select Trade...</option>
+                            <option value="1438">CARPENTER</option>
+                            <option value="1428">Construction Manager</option>
+                            <option value="1441">Contract Manager</option>
+                            <option value="1420">Crane installation engineer</option>
+                            <option value="1419">Crane installation supervisor</option>
+                            <option value="1436">Crane Lift Supervisor</option>
+                            <option value="1446">Crane Operator</option>
+                            <option value="1437">Crane supervisor</option>
+                            <option value="1417">Design Coordinator</option>
+                            <option value="1448">Document controller</option>
+                            <option value="1431">Driver</option>
+                            <option value="1445">ELECTRICAL LABOURER</option>
+                            <option value="1411">electrician</option>
+                            <option value="1430">Engineer</option>
+                            <option value="1414">erector</option>
+                            <option value="1447">Finisher</option>
+                            <option value="1442">Floor Layer</option>
+                            <option value="1427">Gateman</option>
+                            <option value="1415">ground worker</option>
+                            <option value="1429">Health &amp; Safety Advisor</option>
+                            <option value="1425">Installer</option>
+                            <option value="1416">labourer</option>
+                            <option value="1435">Land Drilling</option>
+                            <option value="1410">machine driver</option>
+                            <option value="1434">NDT Technician</option>
+                            <option value="1444">PAINTER</option>
+                            <option value="1426">PLANNER</option>
+                            <option value="1412">plumber</option>
+                            <option value="1424">Precast Concrete Installer</option>
+                            <option value="1409">Project Manager</option>
+                            <option value="1439">QS</option>
+                            <option value="1413">roofer</option>
+                            <option value="1421">scaffolder</option>
+                            <option value="1418">Security Engineer</option>
+                            <option value="1422">Senior Site Manager</option>
+                            <option value="1408">Site Manager</option>
+                            <option value="1432">SLINGER</option>
+                            <option value="1423">Supervisor</option>
+                            <option value="1440">Traffic Marshal</option>
+                            <option value="1407">VISITOR</option>
+                            <option value="1443">Welding Inspector</option>
+                </select>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" onclick="addTradeModal()">Add New</button>
+                </span>
+            </div>
+
+            <!-- date of birth-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Date of Birth</span>
+                <input type="text" class="form-control" id="txtDay" placeholder="dd" name="Date of Birth"
+                       onkeyup="restrictInputAndChar(this, 2)" onblur="formatDayMonth(this, this.value)"
+                       value="" />
+                <span class="input-group-addon">/</span>
+                <input type="text" class="form-control" id="txtMonth" placeholder="mm" name="Date of Birth"
+                       onkeyup="restrictInputAndChar(this, 2)" onblur="formatDayMonth(this, this.value)"
+                       value="" />
+                <span class="input-group-addon">/</span>
+                <input type="text" class="form-control" id="txtYear" placeholder="yyyy" name="Date of Birth"
+                       onkeyup="restrictInputAndChar(this, 4)"
+                       value="" />
+            </div>
+
+            <!--gender-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Gender</span>
+                <span class="input-group-addon">
+                    <input type="radio" id="txtMale" value="m" name="Gender" /> Male
+                </span>
+                <span class="input-group-addon">
+                    <input type="radio" id="txtFemale" value="f" name="Gender" /> Female
+                </span>
+                 <span class="input-group-addon">
+                     <input type="radio" id="txtPrefer" value="p" name="Gender" /> Prefer not to say
+                 </span>
+            </div>
+
+            <!--nationality-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Nationality</span>
+                <select class="form-control" id="ddNationality" name="Nationality">
+                    <option value="0">Select...</option>
+                            <option value="1">Afghan</option>
+                            <option value="2">Albanian</option>
+                            <option value="3">Algerian</option>
+                            <option value="4">American</option>
+                            <option value="5">Andorran</option>
+                            <option value="6">Angolan</option>
+                            <option value="7">Antiguans</option>
+                            <option value="8">Argentinean</option>
+                            <option value="9">Armenian</option>
+                            <option value="10">Australian</option>
+                            <option value="11">Austrian</option>
+                            <option value="12">Azerbaijani</option>
+                            <option value="13">Bahamian</option>
+                            <option value="14">Bahraini</option>
+                            <option value="15">Bangladeshi</option>
+                            <option value="16">Barbadian</option>
+                            <option value="17">Barbudans</option>
+                            <option value="18">Batswana</option>
+                            <option value="19">Belarusian</option>
+                            <option value="20">Belgian</option>
+                            <option value="21">Belizean</option>
+                            <option value="22">Beninese</option>
+                            <option value="23">Bhutanese</option>
+                            <option value="24">Bolivian</option>
+                            <option value="25">Bosnian</option>
+                            <option value="26">Brazilian</option>
+                            <option value="27">British</option>
+                            <option value="28">Bruneian</option>
+                            <option value="29">Bulgarian</option>
+                            <option value="30">Burkinabe</option>
+                            <option value="31">Burmese</option>
+                            <option value="32">Burundian</option>
+                            <option value="33">Cambodian</option>
+                            <option value="34">Cameroonian</option>
+                            <option value="35">Canadian</option>
+                            <option value="36">Cape Verdean</option>
+                            <option value="197">Caribbean</option>
+                            <option value="37">Central African</option>
+                            <option value="38">Chadian</option>
+                            <option value="39">Chilean</option>
+                            <option value="40">Chinese</option>
+                            <option value="41">Colombian</option>
+                            <option value="42">Comoran</option>
+                            <option value="43">Congolese</option>
+                            <option value="44">Costa Rican</option>
+                            <option value="45">Croatian</option>
+                            <option value="46">Cuban</option>
+                            <option value="47">Cypriot</option>
+                            <option value="48">Czech</option>
+                            <option value="49">Danish</option>
+                            <option value="50">Djibouti</option>
+                            <option value="51">Dominican</option>
+                            <option value="52">Dutch</option>
+                            <option value="53">East Timorese</option>
+                            <option value="54">Ecuadorean</option>
+                            <option value="55">Egyptian</option>
+                            <option value="56">Emirian</option>
+                            <option value="198">English</option>
+                            <option value="57">Equatorial Guinean</option>
+                            <option value="58">Eritrean</option>
+                            <option value="59">Estonian</option>
+                            <option value="60">Ethiopian</option>
+                            <option value="61">Fijian</option>
+                            <option value="62">Filipino</option>
+                            <option value="63">Finnish</option>
+                            <option value="64">French</option>
+                            <option value="65">Gabonese</option>
+                            <option value="66">Gambian</option>
+                            <option value="67">Georgian</option>
+                            <option value="68">German</option>
+                            <option value="69">Ghanaian</option>
+                            <option value="70">Greek</option>
+                            <option value="71">Grenadian</option>
+                            <option value="72">Guatemalan</option>
+                            <option value="73">Guinea-Bissauan</option>
+                            <option value="74">Guinean</option>
+                            <option value="75">Guyanese</option>
+                            <option value="76">Haitian</option>
+                            <option value="77">Herzegovinian</option>
+                            <option value="78">Honduran</option>
+                            <option value="79">Hungarian</option>
+                            <option value="81">Icelander</option>
+                            <option value="80">I-Kiribati</option>
+                            <option value="82">Indian</option>
+                            <option value="83">Indonesian</option>
+                            <option value="84">Iranian</option>
+                            <option value="85">Iraqi</option>
+                            <option value="86">Irish</option>
+                            <option value="87">Israeli</option>
+                            <option value="88">Italian</option>
+                            <option value="89">Ivorian</option>
+                            <option value="90">Jamaican</option>
+                            <option value="91">Japanese</option>
+                            <option value="92">Jordanian</option>
+                            <option value="93">Kazakhstani</option>
+                            <option value="94">Kenyan</option>
+                            <option value="95">Kittian and Nevisian</option>
+                            <option value="193">Kosovan</option>
+                            <option value="96">Kuwaiti</option>
+                            <option value="97">Kyrgyz</option>
+                            <option value="98">Laotian</option>
+                            <option value="99">Latvian</option>
+                            <option value="100">Lebanese</option>
+                            <option value="101">Liberian</option>
+                            <option value="102">Libyan</option>
+                            <option value="103">Liechtensteiner</option>
+                            <option value="104">Lithuanian</option>
+                            <option value="105">Luxembourger</option>
+                            <option value="106">Macedonian</option>
+                            <option value="107">Malagasy</option>
+                            <option value="108">Malawian</option>
+                            <option value="109">Malaysian</option>
+                            <option value="110">Maldivan</option>
+                            <option value="111">Malian</option>
+                            <option value="112">Maltese</option>
+                            <option value="113">Marshallese</option>
+                            <option value="114">Mauritanian</option>
+                            <option value="115">Mauritian</option>
+                            <option value="116">Mexican</option>
+                            <option value="117">Micronesian</option>
+                            <option value="118">Moldovan</option>
+                            <option value="119">Monacan</option>
+                            <option value="120">Mongolian</option>
+                            <option value="121">Moroccan</option>
+                            <option value="122">Mosotho</option>
+                            <option value="123">Motswana</option>
+                            <option value="124">Mozambican</option>
+                            <option value="125">Namibian</option>
+                            <option value="126">Nauruan</option>
+                            <option value="127">Nepalese</option>
+                            <option value="128">New Zealander</option>
+                            <option value="129">Nicaraguan</option>
+                            <option value="130">Nigerian</option>
+                            <option value="131">North Korean</option>
+                            <option value="132">Northern Irish</option>
+                            <option value="133">Norwegian</option>
+                            <option value="134">Omani</option>
+                            <option value="135">Pakistani</option>
+                            <option value="136">Palauan</option>
+                            <option value="137">Panamanian</option>
+                            <option value="138">Papua New Guinean</option>
+                            <option value="139">Paraguayan</option>
+                            <option value="140">Peruvian</option>
+                            <option value="141">Polish</option>
+                            <option value="142">Portuguese</option>
+                            <option value="143">Qatari</option>
+                            <option value="144">Romanian</option>
+                            <option value="145">Russian</option>
+                            <option value="146">Rwandan</option>
+                            <option value="147">Saint Lucian</option>
+                            <option value="148">Salvadoran</option>
+                            <option value="149">Samoan</option>
+                            <option value="150">San Marinese</option>
+                            <option value="151">Sao Tomean</option>
+                            <option value="152">Saudi</option>
+                            <option value="153">Scottish</option>
+                            <option value="154">Senegalese</option>
+                            <option value="155">Serbian</option>
+                            <option value="156">Seychellois</option>
+                            <option value="157">Sierra Leonean</option>
+                            <option value="158">Singaporean</option>
+                            <option value="159">Slovakian</option>
+                            <option value="160">Slovenian</option>
+                            <option value="161">Solomon Islander</option>
+                            <option value="162">Somali</option>
+                            <option value="163">South African</option>
+                            <option value="164">South Korean</option>
+                            <option value="165">Spanish</option>
+                            <option value="166">Sri Lankan</option>
+                            <option value="167">Sudanese</option>
+                            <option value="168">Surinamer</option>
+                            <option value="169">Swazi</option>
+                            <option value="170">Swedish</option>
+                            <option value="171">Swiss</option>
+                            <option value="172">Syrian</option>
+                            <option value="173">Taiwanese</option>
+                            <option value="174">Tajik</option>
+                            <option value="175">Tanzanian</option>
+                            <option value="176">Thai</option>
+                            <option value="177">Togolese</option>
+                            <option value="178">Tongan</option>
+                            <option value="179">Trinidadian or Tobagonian</option>
+                            <option value="180">Tunisian</option>
+                            <option value="181">Turkish</option>
+                            <option value="182">Tuvaluan</option>
+                            <option value="183">Ugandan</option>
+                            <option value="184">Ukrainian</option>
+                            <option value="185">Uruguayan</option>
+                            <option value="186">Uzbekistani</option>
+                            <option value="187">Venezuelan</option>
+                            <option value="188">Vietnamese</option>
+                            <option value="189">Welsh</option>
+                            <option value="190">Yemenite</option>
+                            <option value="194">Yugoslavian</option>
+                            <option value="191">Zambian</option>
+                            <option value="192">Zimbabwean</option>
+                </select>
+            </div>
+
+            <!--operative type-->
+            <div class="input-group fullWidth">
+                <span class="input-group-addon grpLabel30">Operative Type</span>
+                <select class="form-control requiredDD" id="ddOperative" name="Operative Type">
+                    <option value="0">Select...</option>
+                        <option value="1">Manager</option>
+                        <option value="2">Supervisor</option>
+                        <option value="3">Operative</option>
+                        <option value="4">Apprentice</option>
+                        <option value="5">Other</option>
+                        <option value="6">Non-Construction</option>
+                </select>
+            </div>
+        <div class="input-group fullWidth">
+            <span class="input-group-addon grpLabel30">Sentinel Number</span>
+            <input type="text" class="form-control required" id="txtSentinelNumber" name="Sentinel Number" value="" />
+        </div>
+
+<!--camera scripts-->
+<script src="/Frontend/js/jpeg_camera/dist/swfobject.min.js" type="text/javascript"></script>
+<script src="/Frontend/js/jpeg_camera/dist/canvas-to-blob.min.js" type="text/javascript"></script>
+<script src="/Frontend/js/jpeg_camera/dist/jpeg_camera.js" type="text/javascript"></script>
+<!--front end controls-->
+<script src="/Frontend/js/TimeAttendance/cardPhoto.js"></script>
+
+<button id="btnProfilePicture" class="btn btn-default fullWidth">
+    Profile Picture
+</button>
+<script nonce="6QITJ/jdy6bab4ikXjRW">    
+    $(document).ready(function () {
+        requireOperativePhotoUploader();
+    })
+    $("#btnProfilePicture").on("click",
+        function() {
+            $('#mdlProfilePicture').modal('show');
+        });
+</script>
+
+<div class="modal fade" id="mdlProfilePicture" tabindex="-1" role="dialog" aria-labelledby="h4Notes">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="h4Notes">Profile Picture</h4>
+            </div>
+            <div class="modal-body">
+<!--main buttons-->
+<div class="row">
+    <div class="col-md-12 well">
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-5">
+            <button class="btn btn-default fullWidth"
+                    onclick="onTakePhotoWithCameraClick()"
+                    id="btnTakeAPhoto">
+                <i class="fa fa-lg fa-camera"
+                   aria-hidden="true"></i> Take a Photo
+            </button>
+        </div>
+        <div class="col-md-5">
+            <button class="btn btn-default fullWidth"
+                    onclick="onUploadExistingImageClick()"
+                    id="btnUploadAFile">
+                <i class="fa fa-lg fa-upload"
+                   aria-hidden="true"></i> Provide Image
+            </button>
+        </div>
+        <div class="col-md-1">&nbsp;</div>
+    </div>
+</div>
+
+<!--photo capture area-->
+<div class="row hidden" id="divPhoto">
+    <div class="col-md-12 well">
+        <h4><small class="text-muted">Take a Photo</small></h4>
+        <hr />
+        <div class="col-md-6" id="divImageContainer">
+            <div class="row text-center" id="divCameraContainer">
+                <style nonce="XgqCN3aMlyKR/rBO9z+t">
+                    #divCamera {
+                        width: auto; height: 200px; margin-bottom: 20px;
+                    }
+                </style>
+                <div id="divCamera"></div>
+            </div>
+            <div class="row text-center tenPxMarginBottom">
+                <button class="btn btn-default" onclick="onTakePhotoClick()"><i class="fa fa-lg fa-camera"
+                                                                         aria-hidden="true"></i>Take Photo</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row text-center" id="divCaptureContainer">
+                <style nonce="XgqCN3aMlyKR/rBO9z+t">
+                    #divCapture {
+                        width: auto; height: 200px; margin-bottom: 20px;
+                    }
+                </style>
+                <div id="divCapture"></div>
+            </div>
+            <div class="row text-center tenPxMarginBottom">
+                <button class="btn btn-default hidden" onclick="onUploadTakenImageClick()" id="btnUploadPhoto">
+                    <i class="fa fa-lg fa-upload"
+                       aria-hidden="true"></i> Upload This Photo
+                    <i class="fa fa-lg fa-spinner fa-pulse hidden"
+                       id="iUploadPhoto"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--file upload area-->
+
+<div class="fullWidth" id="filesTable">
+    <table id="tbImageFiles"></table>
+</div>
+<div class="row hidden" id="divUpload">
+    <div class="col-md-12">
+        <div class="input-group">
+            <input type="file" class="form-control required" id="txtFile" onchange="checkFile()"/>
+            <span class="input-group-btn">
+                <button class="btn btn-default" id="btnUpload"
+                        onclick="uploadClickedInline()"
+                        disabled="disabled">
+                    <i id="iUpload"
+                       class="fa fa-lg fa-spinner fa-pulse hidden">
+                    </i>Upload New Image File
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<!--current photo area-->
+<div class="row">
+    <div class="col-md-12 well">
+        <div class="text-center" id="divExistingPhoto">
+            <h4><small class="text-muted">Current Photo</small></h4>
+            <hr />
+            <img id="imgCurPhoto" class="maxWidth400Px"
+                alt="No photo has been stored for this operative. Either take a photo or upload an existing file." />
+
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="hideUpload()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!--pass user id to js-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var storedImage = ('' !== "" ? '' : null);
+</script>
+
+<!--back end controllers-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var uploadCardPhotoCntrl = '/Frontend/TimeAttendance/UploadCardPhoto';
+    var shutterOggUrl = '/Frontend/js/jpeg_camera/dist/shutter.ogg';
+    var shutterMp3Url = '/Frontend/js/jpeg_camera/dist/shutter.mp3';
+    var swfUrl = '/Frontend/js/jpeg_camera/dist/jpeg_camera.swf';
+    var pushImageCntrl = '/Frontend/TimeAttendance/PushImageToBoxes';
+</script>
+
+<script src="/Frontend/js/Shared/Partials/operativeProfilePictureUploadFunctions.js"></script>
+<script src="/Frontend/js/Shared/Partials/operativeProfilePictureUpload.js"></script>
+    </div>
+    <!--#endregion-->
+        <!--#region contactDetails-->
+        <!--top right well-->
+        <div class="col-md-6 well" id="divTopRightWell">
+            <h4>
+                <small class="text-muted">Contact Details</small>
+            </h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group fullWidth">
+                        <label for="txtAddressFinderHouseNumber" class="input-group-addon grpLabel30">House Name or Number</label>
+                        <input type="text" class="form-control isLast" name="HouseNumber" id="txtAddressFinderHouseNumber" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group fullWidth">
+                        <label for="txtAddressFinderPostcode" class="input-group-addon grpLabel30">Postcode</label>
+                        <input type="text" class="form-control isLast" name="Finder Postcode" id="txtAddressFinderPostcode"
+                               onkeyup="toUpper(this, this.value); removeWhitespaces(this, this.value);" />
+                        <div class="input-group-addon no-padding">
+                            <button id="btnFindAddress" class="btn btn-default find-address-button">Find Address</button>
+                        </div>
+                        <script nonce="6QITJ/jdy6bab4ikXjRW">
+                            $("#btnFindAddress").click(function () {
+                                findAddress();
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group fullWidth">
+                        <p class="find-address-message">Or Enter Manually:</p>
+                    </div>
+                </div>
+            </div>
+            <!--address 1-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Address</span>
+                        <input type="text" class="form-control isLast" id="txtAdd1" name="Address1"
+                               onkeyup="validate(this, this.value, 'AddrLine1To50')"
+                               onblur="validate(this, this.value, 'AddrLine1To50')"
+                               value="" />
+                        <i id="txtAdd1OK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtAdd1Warning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtAdd1Error" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--address 2-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group noLabel70 pull-right">
+                        <input type="text" class="form-control isLast" id="txtAdd2" name="Address2"
+                               onkeyup="validate(this, this.value, 'BlackList')"
+                               onblur="validate(this, this.value, 'BlackList')"
+                               value="" />
+                        <i id="txtAdd2OK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtAdd2Warning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtAdd2Error" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--address 3-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group noLabel70 pull-right">
+                        <input type="text" class="form-control isLast" id="txtAdd3" name="Address3"
+                               onkeyup="validate(this, this.value, 'BlackList')"
+                               onblur="validate(this, this.value, 'BlackList')"
+                               value="" />
+                        <i id="txtAdd3OK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtAdd3Warning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtAdd3Error" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--city-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">City</span>
+                        <input type="text" class="form-control isLast" id="txtCity" name="City"
+                               onkeyup="validate(this, this.value, 'BlackList')" maxlength="50"
+                               onblur="validate(this, this.value, 'BlackList')"
+                               value="" />
+                        <i id="txtCityOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtCityWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtCityError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--postcode-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Postcode</span>
+                        <input type="text" class="form-control isLast" id="txtPostcode" name="Postcode"
+                               onkeyup="validate(this, this.value, 'PostCode'); toUpper(this, this.value); removeWhitespaces(this, this.value);"
+                               onblur="validate(this, this.value, 'PostCode'); calculateMileage(this.value, 'CW1 3PL', 'True');"
+                               value="" />
+                        <i id="txtPostcodeOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtPostcodeWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtPostcodeError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!--home phone no-->
+            <link rel="stylesheet" href="/Frontend/css/intlTelInput.css?885-SystemTemplateNET">
+<link rel="stylesheet" href="/Frontend/css/intlTelInputContainer.css?885-SystemTemplateNET">
+<script src="/Frontend/js/Shared/Partials/utils.js?885-SystemTemplateNET"></script>
+<script src="/Frontend/js/Shared/Partials/intlTelInput.js?885-SystemTemplateNET"></script>
+
+<!--
+international telephone number Partial 
+To use this partial include the partial at the bottom of the page in which this modal is required.
+All scripts required are linked at the top of the partial.
+
+NAME/TYPE FOR THIS PARTIAL:
+select[name="InternationalTelephoneNumber"]
+-->
+
+
+<style>
+    .wrap-text-input-group{
+        white-space: normal !important;
+    }
+
+    .flex{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flex-1{
+        flex:1
+    }
+
+    .min-w-200{
+        min-width: 200px;
+    }
+
+    .min-w-150{
+        min-width: 150px;
+        width: auto;
+    }
+</style>
+
+<!--international contact no-->
+<div class="flex input-group fullWidth">
+    <span class="input-group-addon grpLabel30 wrap-text-input-group min-w-150">Home Phone No.</span>
+    <div class="flex-1 min-w-200">
+        <input type="tel" id="txtHomePhone"
+            name="Home Phone No."
+            onkeyup="restrictInputForPhoneNumbers(this, 15)"
+            value=""
+            onblur="initializeValues(document.querySelector('#txtHomePhone'))"
+        />
+        <script nonce="6QITJ/jdy6bab4ikXjRW">
+            var countries = [];
+            var favouriteCountries = ["gb","us","dk","ie"];
+            var initialCountry = "";
+            var inputtxtHomePhone = document.querySelector("#txtHomePhone");
+    
+            var txtHomePhoneIntlInput = 
+                window.intlTelInput(inputtxtHomePhone, {
+                    utilsScript: true,
+                    onlyCountries: countries,
+                    initialCountry: initialCountry !== "" ? initialCountry : country,
+                    preferredCountries: favouriteCountries,
+                });
+            
+            $('#txtHomePhone').addClass('');
+        </script>
+        <i id="txtHomePhoneOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+        <i id="txtHomePhoneWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+        <i id="txtHomePhoneError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+    </div>
+</div>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+/**
+*  Needs to be called outside partial. 
+* ---------------------------------------------------------------------
+*/
+
+/**
+* returns formatted number if applicable.
+*/
+function convertNumberToInternationalFormatIfExists(fieldId) {
+    var result = "";
+    var variableName = fieldId+"IntlInput";
+    if (window.window[variableName]) {
+        result = window[variableName].getNumber();
+    } else {
+        result = $('#'+ fieldId).val();
+    }
+    return result;
+}
+
+/**
+* returns false if any international number fails.
+*/
+function checkInternationalPhoneNumbersAreValid() {
+    var listOfValidNumbers = [];
+    for (var name in this) {
+        if (name.includes("IntlInput"))
+            listOfValidNumbers.push(validatePhoneNumberField(name));
+    }
+    return validateInputResults(listOfValidNumbers);
+}
+
+
+// ---------------------------------------------------------------------
+
+function initializeValues(input) {
+    var convertedNumber = convertNumberToInternationalFormatIfExists(input.id);
+    var variableName = input.id+"IntlInput";
+    window[variableName].setNumber(convertedNumber);
+}
+
+function validateInputResults (array) {
+    for (var i in array) {
+        if (!array[i]) return false;
+    } 
+    return true;
+}
+
+function validatePhoneNumber(fieldId, fieldName) {
+    var variableName = fieldId+"IntlInput";
+    if (window.window[variableName]) { 
+        if ($('#'+fieldId).val() !== "" && !window[variableName].isValidNumber()) {
+            showError(fieldName +" is not valid.")
+            return false
+        }
+    }
+    return true;
+}
+
+function validatePhoneNumberField(variableName) {
+    var fieldId = variableName.replace('IntlInput', '');
+    var jquerySelector = $('#'+fieldId);
+    if (window.window[variableName]) { 
+        if (jquerySelector.val() === "" && jquerySelector.hasClass('required')){
+            jquerySelector.addClass('requiredFieldNew');
+            return true;
+            }
+        else if (jquerySelector.val() !== "" && !window[variableName].isValidNumber()) {
+            showError('\''+document.getElementById(fieldId).getAttribute("name")+'\'' +" is not in a valid format.");
+           jquerySelector.addClass('requiredFieldNew');
+            return false
+        } else {            
+            return true;
+        }
+    }
+    return true;
+}
+</script>
+            
+            <!--mobile phone no-->
+            <link rel="stylesheet" href="/Frontend/css/intlTelInput.css?885-SystemTemplateNET">
+<link rel="stylesheet" href="/Frontend/css/intlTelInputContainer.css?885-SystemTemplateNET">
+<script src="/Frontend/js/Shared/Partials/utils.js?885-SystemTemplateNET"></script>
+<script src="/Frontend/js/Shared/Partials/intlTelInput.js?885-SystemTemplateNET"></script>
+
+<!--
+international telephone number Partial 
+To use this partial include the partial at the bottom of the page in which this modal is required.
+All scripts required are linked at the top of the partial.
+
+NAME/TYPE FOR THIS PARTIAL:
+select[name="InternationalTelephoneNumber"]
+-->
+
+
+<style>
+    .wrap-text-input-group{
+        white-space: normal !important;
+    }
+
+    .flex{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flex-1{
+        flex:1
+    }
+
+    .min-w-200{
+        min-width: 200px;
+    }
+
+    .min-w-150{
+        min-width: 150px;
+        width: auto;
+    }
+</style>
+
+<!--international contact no-->
+<div class="flex input-group fullWidth">
+    <span class="input-group-addon grpLabel30 wrap-text-input-group min-w-150">Mobile Phone No.</span>
+    <div class="flex-1 min-w-200">
+        <input type="tel" id="txtMobilePhone"
+            name="Mobile Phone No."
+            onkeyup="restrictInputForPhoneNumbers(this, 15)"
+            value=""
+            onblur="initializeValues(document.querySelector('#txtMobilePhone'))"
+        />
+        <script nonce="6QITJ/jdy6bab4ikXjRW">
+            var countries = [];
+            var favouriteCountries = ["gb","us","dk","ie"];
+            var initialCountry = "";
+            var inputtxtMobilePhone = document.querySelector("#txtMobilePhone");
+    
+            var txtMobilePhoneIntlInput = 
+                window.intlTelInput(inputtxtMobilePhone, {
+                    utilsScript: true,
+                    onlyCountries: countries,
+                    initialCountry: initialCountry !== "" ? initialCountry : country,
+                    preferredCountries: favouriteCountries,
+                });
+            
+            $('#txtMobilePhone').addClass('');
+        </script>
+        <i id="txtMobilePhoneOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+        <i id="txtMobilePhoneWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+        <i id="txtMobilePhoneError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+    </div>
+</div>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+/**
+*  Needs to be called outside partial. 
+* ---------------------------------------------------------------------
+*/
+
+/**
+* returns formatted number if applicable.
+*/
+function convertNumberToInternationalFormatIfExists(fieldId) {
+    var result = "";
+    var variableName = fieldId+"IntlInput";
+    if (window.window[variableName]) {
+        result = window[variableName].getNumber();
+    } else {
+        result = $('#'+ fieldId).val();
+    }
+    return result;
+}
+
+/**
+* returns false if any international number fails.
+*/
+function checkInternationalPhoneNumbersAreValid() {
+    var listOfValidNumbers = [];
+    for (var name in this) {
+        if (name.includes("IntlInput"))
+            listOfValidNumbers.push(validatePhoneNumberField(name));
+    }
+    return validateInputResults(listOfValidNumbers);
+}
+
+
+// ---------------------------------------------------------------------
+
+function initializeValues(input) {
+    var convertedNumber = convertNumberToInternationalFormatIfExists(input.id);
+    var variableName = input.id+"IntlInput";
+    window[variableName].setNumber(convertedNumber);
+}
+
+function validateInputResults (array) {
+    for (var i in array) {
+        if (!array[i]) return false;
+    } 
+    return true;
+}
+
+function validatePhoneNumber(fieldId, fieldName) {
+    var variableName = fieldId+"IntlInput";
+    if (window.window[variableName]) { 
+        if ($('#'+fieldId).val() !== "" && !window[variableName].isValidNumber()) {
+            showError(fieldName +" is not valid.")
+            return false
+        }
+    }
+    return true;
+}
+
+function validatePhoneNumberField(variableName) {
+    var fieldId = variableName.replace('IntlInput', '');
+    var jquerySelector = $('#'+fieldId);
+    if (window.window[variableName]) { 
+        if (jquerySelector.val() === "" && jquerySelector.hasClass('required')){
+            jquerySelector.addClass('requiredFieldNew');
+            return true;
+            }
+        else if (jquerySelector.val() !== "" && !window[variableName].isValidNumber()) {
+            showError('\''+document.getElementById(fieldId).getAttribute("name")+'\'' +" is not in a valid format.");
+           jquerySelector.addClass('requiredFieldNew');
+            return false
+        } else {            
+            return true;
+        }
+    }
+    return true;
+}
+</script>
+
+            <!--email-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Email</span>
+                        <input type="text"
+                               id="txtEmail" name="Email"
+                               class="form-control isLast required"
+                               onkeyup="if (this.value !== '') validate(this, this.value, 'Email');"
+                               onblur="this.onkeyup();"
+                               value="" />
+                        <i id="txtEmailOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtEmailWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtEmailError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end of top right well-->
+        <!--#endregion-->
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12 well">
+            <h4>
+                <small class="text-muted">Emergency Contact Details</small>
+            </h4>
+            <hr/>
+            <!-- emergency contact-->
+            <div class="row">
+                
+                <!--emergency contact name-->
+                <div class="col-md-6">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Emergency Contact</span>
+                        <input type="text" class="form-control isLast" id="txtEmergencyContact" name="Emergency Contact"
+                               onkeyup="if (this.value !== '') validate(this, this.value, 'BlackList');" maxlength="50"
+                               onblur="this.onkeyup();"
+                               value=""/>
+                        <i id="txtEmergencyContactOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Relationship</span>
+                        <input type="text" class="form-control isLast" id="txtEmergencyContactRelationship" name="Emergency Contact Relationship"
+                               onkeyup="if (this.value !== '') validate(this, this.value, 'BlackList');" maxlength="50"
+                               onblur="this.onkeyup();"
+                               value=""/>
+                        <i id="txtEmergencyContactRelationshipOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactRelationshipWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactRelationshipError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                    <!--emergency contact no-->
+                    <link rel="stylesheet" href="/Frontend/css/intlTelInput.css?885-SystemTemplateNET">
+<link rel="stylesheet" href="/Frontend/css/intlTelInputContainer.css?885-SystemTemplateNET">
+<script src="/Frontend/js/Shared/Partials/utils.js?885-SystemTemplateNET"></script>
+<script src="/Frontend/js/Shared/Partials/intlTelInput.js?885-SystemTemplateNET"></script>
+
+<!--
+international telephone number Partial 
+To use this partial include the partial at the bottom of the page in which this modal is required.
+All scripts required are linked at the top of the partial.
+
+NAME/TYPE FOR THIS PARTIAL:
+select[name="InternationalTelephoneNumber"]
+-->
+
+
+<style>
+    .wrap-text-input-group{
+        white-space: normal !important;
+    }
+
+    .flex{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flex-1{
+        flex:1
+    }
+
+    .min-w-200{
+        min-width: 200px;
+    }
+
+    .min-w-150{
+        min-width: 150px;
+        width: auto;
+    }
+</style>
+
+<!--international contact no-->
+<div class="flex input-group fullWidth">
+    <span class="input-group-addon grpLabel30 wrap-text-input-group min-w-150">Emergency Contact No.</span>
+    <div class="flex-1 min-w-200">
+        <input type="tel" id="txtEmergencyContactNo"
+            name="Emergency Contact No."
+            onkeyup="restrictInputForPhoneNumbers(this, 15)"
+            value=""
+            onblur="initializeValues(document.querySelector('#txtEmergencyContactNo'))"
+        />
+        <script nonce="6QITJ/jdy6bab4ikXjRW">
+            var countries = [];
+            var favouriteCountries = ["gb","us","dk","ie"];
+            var initialCountry = "";
+            var inputtxtEmergencyContactNo = document.querySelector("#txtEmergencyContactNo");
+    
+            var txtEmergencyContactNoIntlInput = 
+                window.intlTelInput(inputtxtEmergencyContactNo, {
+                    utilsScript: true,
+                    onlyCountries: countries,
+                    initialCountry: initialCountry !== "" ? initialCountry : country,
+                    preferredCountries: favouriteCountries,
+                });
+            
+            $('#txtEmergencyContactNo').addClass('');
+        </script>
+        <i id="txtEmergencyContactNoOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+        <i id="txtEmergencyContactNoWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+        <i id="txtEmergencyContactNoError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+    </div>
+</div>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+/**
+*  Needs to be called outside partial. 
+* ---------------------------------------------------------------------
+*/
+
+/**
+* returns formatted number if applicable.
+*/
+function convertNumberToInternationalFormatIfExists(fieldId) {
+    var result = "";
+    var variableName = fieldId+"IntlInput";
+    if (window.window[variableName]) {
+        result = window[variableName].getNumber();
+    } else {
+        result = $('#'+ fieldId).val();
+    }
+    return result;
+}
+
+/**
+* returns false if any international number fails.
+*/
+function checkInternationalPhoneNumbersAreValid() {
+    var listOfValidNumbers = [];
+    for (var name in this) {
+        if (name.includes("IntlInput"))
+            listOfValidNumbers.push(validatePhoneNumberField(name));
+    }
+    return validateInputResults(listOfValidNumbers);
+}
+
+
+// ---------------------------------------------------------------------
+
+function initializeValues(input) {
+    var convertedNumber = convertNumberToInternationalFormatIfExists(input.id);
+    var variableName = input.id+"IntlInput";
+    window[variableName].setNumber(convertedNumber);
+}
+
+function validateInputResults (array) {
+    for (var i in array) {
+        if (!array[i]) return false;
+    } 
+    return true;
+}
+
+function validatePhoneNumber(fieldId, fieldName) {
+    var variableName = fieldId+"IntlInput";
+    if (window.window[variableName]) { 
+        if ($('#'+fieldId).val() !== "" && !window[variableName].isValidNumber()) {
+            showError(fieldName +" is not valid.")
+            return false
+        }
+    }
+    return true;
+}
+
+function validatePhoneNumberField(variableName) {
+    var fieldId = variableName.replace('IntlInput', '');
+    var jquerySelector = $('#'+fieldId);
+    if (window.window[variableName]) { 
+        if (jquerySelector.val() === "" && jquerySelector.hasClass('required')){
+            jquerySelector.addClass('requiredFieldNew');
+            return true;
+            }
+        else if (jquerySelector.val() !== "" && !window[variableName].isValidNumber()) {
+            showError('\''+document.getElementById(fieldId).getAttribute("name")+'\'' +" is not in a valid format.");
+           jquerySelector.addClass('requiredFieldNew');
+            return false
+        } else {            
+            return true;
+        }
+    }
+    return true;
+}
+</script>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Address</span>
+                        <input type="text" class="form-control isLast" id="txtEmergencyContactAddress" name="Emergency Contact Address"
+                               onkeyup="if (this.value !== '') validate(this, this.value, 'BlackList');" maxlength="50"
+                               onblur="this.onkeyup();"
+                               value=""/>
+                        <i id="txtEmergencyContactAddressOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactAddressWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactAddressError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">City</span>
+                        <input type="text" class="form-control isLast" id="txtEmergencyContactCity" name="Emergency Contact City"
+                               onkeyup="if (this.value !== '') validate(this, this.value, 'BlackList');" maxlength="50"
+                               onblur="this.onkeyup();"
+                               value=""/>
+                        <i id="txtEmergencyContactCityOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactCityWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactCityError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Postcode</span>
+                        <input type="text" class="form-control isLast" id="txtEmergencyContactPostcode" name="Emergency Contact Postcode"
+                               onkeyup="validate(this, this.value, 'PostCode'); toUpper(this, this.value); removeWhitespaces(this, this.value);"
+                               onblur="this.onkeyup();"
+                               value=""/>
+                        <i id="txtEmergencyContactPostcodeOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactPostcodeWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                        <i id="txtEmergencyContactPostcodeError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of top wells -->
+    <!--#region travelDetails-->
+    <!--middle well-->
+    <div class="row">
+        <div class="col-md-12 well">
+            <h4>
+                <small class="text-muted">Travel Details</small>
+            </h4>
+            <hr />
+            <div class="row">
+                <!--left column-->
+                <div class="col-md-6">
+                    <!--travel method-->
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Travel Method</span>
+                        <select class="form-control requiredDD" id="ddTravel" name="Travel Method" onchange="handleTravelMethodChange(this), checkTravelMethodForIfVehicleRegIsRequired()">
+                            <option value="0">Select Travel Method</option>
+                                    <option value="2">Bicycle</option>
+                                    <option value="5">Bus</option>
+                                    <option value="4">Car</option>
+                                    <option value="3">Motorbike</option>
+                                    <option value="7">Share</option>
+                                    <option value="6">Train</option>
+                                    <option value="1">Walk</option>
+                        </select>
+                    </div>
+                    <!--co2 classes-->
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">CO<sub>2</sub> Class</span>
+                        <select class="form-control" id="ddCO2" name="CO2 Class" name="CO2 Class">
+                            <option value="0">Select Vehicle</option>
+                                    <option value="6">Car - Diesel Large (&gt;2.0L)</option>
+                                    <option value="5">Car - Diesel Medium (1.7L -2.0L)</option>
+                                    <option value="4">Car - Diesel Small (&lt;1.7L)</option>
+                                    <option value="10">Car - Large LPG or CNG Car</option>
+                                    <option value="8">Car - Large Petrol Hybrid Car</option>
+                                    <option value="9">Car - Medium LPG or CNG Car</option>
+                                    <option value="7">Car - Medium Petrol Hybrid Car</option>
+                                    <option value="3">Car - Petrol Large (&gt;2.0L)</option>
+                                    <option value="2">Car - Petrol Medium (1.4L -2.0L)</option>
+                                    <option value="1">Car - Petrol Small (&lt;1.4L)</option>
+                                    <option value="26">Lorry/HGV : Artic (&gt;3.5-33.0t) - Laden: 0 percent</option>
+                                    <option value="29">Lorry/HGV : Artic (&gt;3.5-33.0t) - Laden: 100 percent</option>
+                                    <option value="27">Lorry/HGV : Artic (&gt;3.5-33.0t) - Laden: 44 percent (Avg load)</option>
+                                    <option value="28">Lorry/HGV : Artic (&gt;3.5-33.0t) - Laden: 50 percent</option>
+                                    <option value="30">Lorry/HGV : Artic (&gt;33.0t) - Laden: 0 percent</option>
+                                    <option value="33">Lorry/HGV : Artic (&gt;33.0t) - Laden: 100 percent</option>
+                                    <option value="31">Lorry/HGV : Artic (&gt;33.0t) - Laden: 50 percent</option>
+                                    <option value="32">Lorry/HGV : Artic (&gt;33.0t) - Laden: 62 percent (Avg load)</option>
+                                    <option value="22">Lorry/HGV : Rigid (&gt;17.0t) - Laden: 0 percent</option>
+                                    <option value="25">Lorry/HGV : Rigid (&gt;17.0t) - Laden: 100 percent</option>
+                                    <option value="23">Lorry/HGV : Rigid (&gt;17.0t) - Laden: 50 percent</option>
+                                    <option value="24">Lorry/HGV : Rigid (&gt;17.0t) - Laden: 54 percent (Avg load)</option>
+                                    <option value="14">Lorry/HGV : Rigid (&gt;3.5-7.5t) - Laden: 0 percent</option>
+                                    <option value="17">Lorry/HGV : Rigid (&gt;3.5-7.5t) - Laden: 100 percent</option>
+                                    <option value="15">Lorry/HGV : Rigid (&gt;3.5-7.5t) - Laden: 46 percent (Avg load)</option>
+                                    <option value="16">Lorry/HGV : Rigid (&gt;3.5-7.5t) - Laden: 50 percent</option>
+                                    <option value="18">Lorry/HGV : Rigid (&gt;7.5-17.0t) - Laden: 0 percent</option>
+                                    <option value="21">Lorry/HGV : Rigid (&gt;7.5-17.0t) - Laden: 100 percent</option>
+                                    <option value="19">Lorry/HGV : Rigid (&gt;7.5-17.0t) - Laden: 39 percent (Avg load)</option>
+                                    <option value="20">Lorry/HGV : Rigid (&gt;7.5-17.0t) - Laden: 50 percent</option>
+                                    <option value="36">Motorcycle - Petrol Large (&gt;500cc)</option>
+                                    <option value="35">Motorcycle - Petrol Medium (125cc - 500cc)</option>
+                                    <option value="34">Motorcycle - Petrol Small (&lt;125cc)</option>
+                                    <option value="12">Van/Light Commercial - Diesel (&lt;3.50 tonnes)</option>
+                                    <option value="13">Van/Light Commercial - LPG or CNG (&lt;3.50 tonnes)</option>
+                                    <option value="11">Van/Light Commercial - Petrol (&lt;3.50 tonnes)</option>
+                        </select>
+                    </div>
+                </div>
+                <!--end of left column-->
+                <!--right column-->
+                <div class="col-md-6">
+                    <div class="row">
+                        <!-- split cols for miles and reg-->
+                        <div class="col-md-6">
+                            <!-- miles travelled-->
+                            <div class="input-group fullWidth">
+                                <span class="input-group-addon">Miles Travelled</span>
+                                <input type="text" class="form-control isLast" id="txtMileage" name="Miles Travelled"
+                                       onkeyup="validate(this, this.value, 'Decimal')"
+                                       onblur="validate(this, this.value, 'Decimal')"
+                                       value="" />
+                                <i id="txtMileageOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                                <i id="txtMileageWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                                <i id="txtMileageError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                                <i id="iMileage" class="fa fa-lg fa-spinner fa-pulse hidden errspan"></i>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!--Direct Distance-->
+                            <div class="input-group fullWidth">
+                                <span class="input-group-addon">Direct Distance</span>
+                                <input type="text" class="form-control isLast" id="txtDirect" name="Direct Distance"
+                                       value="0" readonly disabled />
+                                <i id="iDirect" class="fa fa-lg fa-spinner fa-pulse hidden errspan"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!--col for reg-->
+                        <div class="col-md-6">
+                            <!--reg-->
+                            <div class="input-group fullWidth">
+                                <span class="input-group-addon">Vehicle Reg</span>
+                                <input type="text" id="txtReg" class="form-control isLast" name="Vehicle Reg"
+                                       onkeyup="validate(this, this.value, 'Registration'); toUpper(this, this.value);"
+                                       onblur="validate(this, this.value, 'Registration')"
+                                       value="" />
+                                <i id="txtRegOK" class="glyphicon glyphicon-ok form-control-feedback hidden"></i>
+                                <i id="txtRegWarning" class="glyphicon glyphicon-warning-sign form-control-feedback hidden"></i>
+                                <i id="txtRegError" class="glyphicon glyphicon-remove form-control-feedback hidden"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row for drving licence-->
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <!--driving licence-->
+                            <div class="input-group">
+                                <span class="input-group-addon">Full UK Driving Licence</span>
+                                <span class="input-group-addon">
+                                    <input type="checkbox"
+                                           id="chkLicence" /> <i class="fa fa-lg fa-check"></i> for YES
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end of right column-->
+
+            </div>
+        </div>
+    </div>
+    
+        <div class="row">
+            <div class="col-md-12 well" id="txtDeclaration">
+                <h4>
+                    <small class="text-muted">Declaration</small>
+                </h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group fullWidth">
+                            <span class="input-group-addon grpLabel30 breaklines higherLines requiredCheckBox" style="text-align: left">Do you understand that failing to follow the safety instructions and site rules may result in disciplinary against you? If the Site Management are not satisfied with your performance you will be asked to cease work, until further notice.</span>
+                            <span class="input-group-addon">
+                                <input type="checkbox" class="requiredCheckbox" id="chkDeclaration"/> <i class="fa fa-lg fa-check"></i> for YES
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--end of second well-->
+    <!--#endregion-->
+    <!--#region boxPermissions-->
+    <!--second to bottom well-->
+    <div class="row">
+        <div class="col-md-12 well" id="divBoxPermissions">
+            <h4>
+                <small class="text-muted">Box Permissions</small>
+            </h4>
+            <hr />
+            <!-- split cols for manager and enroller-->
+            <div class="row">
+                <!--manager-->
+                <div class="col-md-6">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon">Manager</span>
+                        <span class="input-group-addon">
+                            <input type="radio" id="rdoManagerYes" name="rdoManager" onchange="managerChecked(this)" /> Yes
+                        </span>
+                        <span class="input-group-addon">
+                            <input type="radio" id="rdoManagerNo" name="rdoManager" onchange="managerChecked(this)" /> No
+                        </span>
+                    </div>
+                    <p class="text-muted">
+                        <em>(Allows users to access the Manager Menu on the site boxes)</em>
+                    </p>
+                </div>
+                <!--enroller-->
+                <div class="col-md-6">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon">Enroller</span>
+                        <span class="input-group-addon">
+                            <input type="radio" id="rdoEnrollerYes" name="rdoEnroller" /> Yes
+                        </span>
+                        <span class="input-group-addon">
+                            <input type="radio" id="rdoEnrollerNo" name="rdoEnroller" /> No
+                        </span>
+                    </div>
+                    <p class="text-muted">
+                        <em>(Allows users to enrol operatives on the site boxes)</em>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of second to bottom well-->
+    <!--#endregion-->
+    <!--#region dateAndButtons-->
+    <!--bottom well-->
+    <div class="row">
+        <div class="col-md-12 well">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Induction Date</span>
+                        <input type="text" class="form-control required" id="dpInductionDate" name="Induction Date"
+                               onchange="getInductionAvailability()"
+                                autocomplete="off" readonly="readonly"
+                               value="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group fullWidth">
+                        <span class="input-group-addon grpLabel30">Available Places</span>
+                        <input type="text" class="form-control" id="txtAvailablePlaces"  disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of bottom well-->
+    <!--footer buttons-->
+    <div class="row">
+        <hr />
+                    <button class="btn btn-default pull-right"
+                    id="btnSubmit"
+                    onclick="submit()">
+                <i id="iSubmit"
+                   class="fa fa-lg fa-spinner fa-pulse hidden">
+                </i> Submit
+            </button>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+</div>
+<!--end of footer buttons-->
+<!--#endregion-->
+<!--pass datatime to javascript-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var dataTime = "False";
+    var userID = '';
+    var operativeID = '';
+    var isAdmin = 'False';
+    var jobNo = '0';
+    var isOnboarding = 'True';
+    var HasOnlineInduction = true;
+</script>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var inductionCourses = [{"CourseName":"Site Induction","MaxPeopleOnCourse":4000,"IsOnMonday":true,"IsOnTuesday":true,"IsOnWednesday":true,"IsOnThursday":true,"IsOnFriday":true,"IsOnSaturday":false,"IsOnSunday":false,"CourseContactName":"Matt","CourseContactEmail":"matthew.jeeves@goldbeck.co.uk","StartDate":"\/Date(1658737847670)\/","StartHour":"09","StartMinute":"00","DurationHours":"10","DurationMinutes":"0","Notes":"An induction course cannot be deactivated.","IsActive":true,"IsInduction":true,"SiteId":1,"CourseNoticePeriod":null,"CutoffTime":null,"SaturdayIsNoticePeriod":false,"SundayIsNoticePeriod":false,"IsOneDayCourse":false,"OneDayCourseDate":null,"NotifySubmitterByEmailOnAccept":null,"GrantDefaultAccessOnAccept":null,"StartTimeSpan":{"Hours":9,"Minutes":0,"Seconds":0,"Milliseconds":0,"Ticks":324000000000,"Days":0,"TotalDays":0.375,"TotalHours":9,"TotalMilliseconds":32400000,"TotalMinutes":540,"TotalSeconds":32400},"IsMorning":true,"Id":1}];
+        opendays.push(["0", "False"]);
+        opendays.push(["1", "True"]);
+        opendays.push(["2", "True"]);
+        opendays.push(["3", "True"]);
+        opendays.push(["4", "True"]);
+        opendays.push(["5", "True"]);
+        opendays.push(["6", "False"]);
+    
+        opendays.FirstAllowedInductionDay = new Date(2023, 9, 27);
+</script>
+
+<!--partials-->
+<style nonce="XgqCN3aMlyKR/rBO9z+t">
+    .find-company-message {
+        padding-bottom: 6px;
+        margin: 0;
+        text-align: center;
+        display: block;
+    }
+
+    .borderBottom {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .alignRight {
+        text-align: right
+    }
+
+    .no-padding {
+        padding: 0;
+    }
+</style>
+<div class="modal fade" id="mdlAddOrUpdateCompany" tabindex="-1" role="dialog" aria-labelledby="h4AddCompany">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        onclick="closeAddOrUpdateCompanyModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="mdlAddOrUpdateCompanyTitle">&nbsp;</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select name="ApiService" class="form-control" id="ddMdlApiService"
+                                onchange="checkForDuplicateExternalCompanyNumber();">
+                        </select>
+                    </div>
+                    <div class="col-md-3 no-padding">
+                        <div class="input-group fullWidth">
+                            <p class="adminLabel pull-right">Search by company number</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group fullWidth">
+                            <input id="txtMdlFindExternalCompanyNumber" type="text" class="form-control" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" id="btnMdlFindExternalCompanyNumber"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-group fullWidth">
+                        <div class="col-md-4">
+                            <p class="text-muted text-center"><em>Selected company provider service will affect company search results.</em></p>
+                        </div>
+                        <div id="divMdlUpdateCompanyBody" hidden>
+                            <div class="col-md-3 no-padding">
+                                <div class="input-group fullWidth">
+                                    <p class="adminLabel pull-right">Search by selected company</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="input-group fullWidth">
+                                    <select id="ddMdlCompany" class="form-control"
+                                            onchange="resetModalFormData(); disableFormDataInputFields(true); disableSubmitButtons(true);">
+                                        <option value="0" selected disabled>Select...</option>
+                                    </select>
+                                    <div class="input-group-addon no-padding">
+                                        <button class="btn btn-default" id="btnMdlFindCompanyDetails" onclick="getCompanyDetails();"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divMdlAddCompanyBody">
+                    <div class="borderBottom">
+                        <span class="find-company-message" id="divMdlAddCompanyBodyHeader" hidden>Or Enter Manually:</span>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">Name</p>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlCompanyName" class="form-control lonely"
+                                       onblur="checkIsDuplicateCompanyName();"
+                                       data-toggle="popover" data-trigger="focus"
+                                       data-placement="top" data-container="body" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">Address</p>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlCompanyAdd1" class="form-control lonely" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlCompanyAdd2" class="form-control lonely" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlCompanyAdd3" class="form-control lonely" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">Postcode</p>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlCompanyPostCode" class="form-control lonely" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">Telephone</p>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlCompanyTelephone" class="form-control lonely" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">Fax</p>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlCompanyFax" class="form-control lonely" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">External Company Number</p>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" id="txtMdlExternalCompanyNumber" class="form-control lonely"
+                                       onblur="checkForDuplicateExternalCompanyNumber();"
+                                       data-toggle="popover" data-trigger="focus"
+                                       data-content="This company number is already taken for this provider."
+                                       data-placement="top" data-container="body" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">Supporting Document Upload</p>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="file" class="form-control" id="fileMdlSupportingDoc" />
+                            </div>
+                        </div>
+                        <div id="divMdlSupportingDocsContainer"></div>
+                    </div>
+                    <div id="divMdlBlockBooking" class="row" hidden>
+                        <div class="input-group fullWidth">
+                            <div class="col-md-4">
+                                <p class="adminLabel pull-right">Can make Block Bookings?</p>
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-3">
+                                <span class="input-group-addon">
+                                    <input type="radio" id="rdoMdlBlockBookingYes" value="1" name="MdlBlockBooking" /> Yes
+                                </span>
+                                <span class="input-group-addon alignRight">
+                                    <input type="radio" id="rdoMdlBlockBookingNo" value="0" name="MdlBlockBooking" /> No
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-7">
+                            <p class="text-muted pull-right"><em>(Enables block booking option inside delivery bookings.)</em></p>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <div id="divMdlAddCompanyFooter" hidden>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"
+                            onclick="closeAddOrUpdateCompanyModal()">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-default pull-right" onclick="addOrUpdateCompany()" id="btnMdlAddCompany">
+                        <i id="iAddCompany" class="fa fa-lg fa-spinner fa-pulse hidden"></i> Submit
+                    </button>
+                </div>
+            </div>
+
+            <div id="divMdlUpdateCompanyFooter" hidden>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal"
+                            onclick="closeAddOrUpdateCompanyModal()">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-danger" id="btnMdlDeleteCompany" onclick="softDeleteCompany()" disabled>
+                        <i id="iDeleteCompany" class="fa fa-lg fa-spinner fa-pulse hidden"></i> Delete
+                    </button>
+                    <button type="button" class="btn btn-default pull-right" id="btnMdlUpdateCompany"
+                            onclick="addOrUpdateCompany()" disabled>
+                        <i class="fa fa-lg fa-spinner fa-pulse hidden" id="iUpdateCompany"></i> Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--back end controllers-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var addOrUpdateCompanyCntrl = '/Frontend/CompanyInfo/AddOrUpdateCompany';
+    var deleteCompanyCntrl = '/Frontend/CompanyInfo/DeleteCompany';
+    var getCompanyDetailsCntrl = '/Frontend/CompanyInfo/GetCompanyDetails';
+    var getCompanyDetailsByExternalCompanyIdAndServiceTypeCntrl = '/Frontend/CompanyInfo/GetCompanyDetailsByExternalCompanyIdAndServiceType';
+    var getCompaniesCntrl = '/Frontend/CompanyInfo/GetCompanies';
+    var doesDuplicateCompanyNameExistCntrl = '/Frontend/CompanyInfo/IsDuplicateCompanyName';
+    var isDuplicateExternalCompanyCntrl = '/Frontend/CompanyInfo/IsDuplicateExternalCompany';
+    var getExternalCompanyApiServicesCntrl = '/Frontend/ExternalCompanyApi/GetExternalCompanyApiServices';
+    var getExternalCompanyDetailsByIdAndTypeCntrl = '/Frontend/ExternalCompanyApi/GetExternalCompanyDetailsByIdAndType';
+    var getAcceptedFileTypesCntrl = '/Frontend/DocumentUploader/GetAcceptedFileTypes';
+    var validateDocumentCntrl = '/Frontend/DocumentUploader/ValidateOnSelectFile';
+
+    var dropdownIdsList = ["ddCompanyDir","ddCompanyRep"];
+</script>
+
+<script src="/Frontend/js/Shared/Partials/fileUploaderFunctions.js?885-SystemTemplateNET"></script>
+<script src="/Frontend/js/Shared/Partials/addOrUpdateCompanyModal.js?885-SystemTemplateNET"></script>
+<!--
+    add trade Partial 
+    To use this partial include the partial at the bottom of the page in which this modal is required.
+    All scripts required are linked at the bottom of the partial.
+
+    The partial will handle updating any data, if you wish to rebuild any controls with the new data ensure 
+    those controls are name correctly.
+
+    NAME/TYPE FOR THIS PARTIAL:
+    select[name="Trade"]
+    -->
+<div class="modal fade" id="mdlAddTrade" tabindex="-1" role="dialog" aria-labelledby="h4AddTrade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="h4AddTrade">Add New Trade</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="input-group fullWidth">
+                        <div class="col-md-4">
+                            <p class="adminLabel pull-right">New Trade</p>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" id="txtAddTradeName" class="form-control lonely" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default pull-right"
+                        onclick="addTrade()"
+                        id="btnAddTrade">
+                    <i id="iAddTrade"
+                       class="fa fa-lg fa-spinner fa-pulse hidden"></i> Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/Frontend/js/Shared/Partials/addTradeModal.js"></script>
+
+<!--back end controllers-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var addTradeCntrl = '/Frontend/TimeAttendance/AddTrade';
+    var updateTradeCntrl = '/Frontend/TimeAttendance/UpdateTrade';
+    var getTradesCntrl = '/Frontend/TimeAttendance/GetTrades';
+</script>
+
+<div class="modal fade" id="mdlConfirmUpdateOperativeExpiryDate" tabindex="-1" role="dialog"
+     aria-labelledby="h4ConfirmUpdateExpiry">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="h4ConfirmUpdateExpiry">Confirm Update Expiry Date</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Operative expiry date has been set manually.</p>
+                        <p>Would you like to update the access expiry to the earliest critical competency expiry?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnRefuseUpdateExpiry" type="button" class="btn btn-default pull-left">
+                    <i id="iRefuseUpdateExpiry" class="fa fa-lg fa-spinner fa-pulse hidden"></i> No
+                </button>
+                <button id="btnConfirmUpdateExpiry" type="button" class="btn btn-default">
+                    <i id="iConfirmUpdateExpiry" class="fa fa-lg fa-spinner fa-pulse hidden"></i> Yes
+                </button>
+                <script nonce="6QITJ/jdy6bab4ikXjRW">
+                    $('#btnRefuseUpdateExpiry').click(function() {
+                        addCompetencyToExistingUser(false);
+                    });
+
+                    $('#btnConfirmUpdateExpiry').click(function() {
+                        addCompetencyToExistingUser(true);
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+<style nonce="XgqCN3aMlyKR/rBO9z+t">
+    #mdlConfirmUpdateOperativeExpiryDate {
+        z-index: 9999;
+    }
+</style>
+
+<style>
+    .wrap-text-input-group{
+        white-space: normal !important;
+    }
+
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .flex-space-between {
+        justify-content: space-between;
+    }
+
+    .flex-1 {
+        flex:1
+    }
+
+    .min-w-150 {
+        min-width: 150px;
+    }
+
+    .min-w-200 {
+        min-width: 200px;
+    }
+</style>
+
+<!-- manage competencies modal -->
+<div class="modal fade" id="mdlCompetencies" tabindex="-1" role="dialog" aria-labelledby="h4Competency">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="h4Competencies">Competencies</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well  modalTable">
+                            <table class="table table-striped sortable selectable" id="tblCompetencies">
+                                <thead>
+                                    <tr>
+                                        <th>Competency</th>
+                                        <th>Registration_No</th>
+                                        <th>Expiry_Date</th>
+                                        <th>Test_Date</th>
+                                        <th>Copy_Taken</th>
+                                        <th>Checked</th>
+                                        <th class="hidden">CompetencyID</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbCompetencies"></tbody>
+                            </table>
+                            <script nonce="6QITJ/jdy6bab4ikXjRW">
+                                $('#tbCompetencies').on("click", "tr", function () {
+                                    selectCompRow(this, $(this).data('id'));
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="flex flex-space-between">
+                    <div>
+                        <div class="input-group-addon">
+                            <p>Add/Edit a Competency</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-group-addon">
+                            
+<!-- original tooltip -->
+<a onclick="openCriticalCompetenciesModal()">
+    <i class="fa fa-question fa-sm"></i> Which competencies do I need?
+</a>
+
+<!-- modal -->
+<div class="modal fade bg-black-transparent" id="mdlRequiredCompetenciesModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button"
+                        class="close"
+                        onclick="closeModal()"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Required Competencies</h4>
+            </div>
+            <div class="modal-body">
+              <div id="mdlMainText"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" onclick="closeModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- styles -->
+<style>
+    .bg-black-transparent {
+      background-color: rgba(0, 0, 0, 0.147);
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+</style>
+
+<!-- code -->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    let operativeTypeId = $("#ddOperative").val();
+    const urlGetCriticalCompetenciesList = "/Frontend/TimeAttendance/GetCriticalCompetenciesList";
+    
+    // load data (on parent load)
+    $(document).on("manageCompetenciesModalShown", (event, operativeId) => {
+      getCriticalCompetencies(null, operativeId);
+    });
+    
+    // update data (on changes)
+    $(document).on("operativeTypeChanged", (
+      event,
+      operativeTypeId,
+      operativeId
+    ) => {
+      getCriticalCompetencies(operativeTypeId, operativeId);
+    });
+    
+    // open modal (once tooltip clicked)
+    const openCriticalCompetenciesModal = () => {         
+      $("#mdlRequiredCompetenciesModal").modal("show");
+    }
+    
+    // get data
+    const getCriticalCompetencies = (operativeTypeId, operativeId) => {
+      // data
+      operativeTypeId = !!$('#ddOperative') ? $('#ddOperative').val() : operativeTypeId;
+      var tradeId = !!$('#ddTrade') ? $('#ddTrade').val() : null;
+
+      // request
+      const request = {
+        operativeTypeId: operativeTypeId === "0" ? null : operativeTypeId,
+        operativeId: operativeId,
+        tradeId: tradeId === "0" ? null : tradeId
+      };
+      $.post(urlGetCriticalCompetenciesList, request)
+       .success(function(data) {
+          // data
+          const result = JSON.parse(data);
+
+          // extract
+          let mandatoryList = "<ul class=''>";
+          $.each(result.mandatory, function() {
+              mandatoryList = mandatoryList + `<li>${this}</li>`;
+          });
+          mandatoryList += "</ul>";
+
+          // extract
+          let criticalList = "<ul class=''>";
+          $.each(result.critical, function() {
+            criticalList = criticalList + `<li>${this}</li>`;
+          });
+          criticalList += "</ul>";
+
+          // finalize
+          let competenciesList = "<p class='bold'>Mandatory competencies:</p>" + mandatoryList;
+          if (!result.usesCompetencyApi && result.critical.length > 0) {
+            competenciesList = competenciesList + "<p class='bold'>One of competencies below based on operative type:</p>" + criticalList;
+          } 
+
+          // update content
+          const modalMainText = $("#mdlMainText");
+          modalMainText.html(competenciesList);
+      });
+    }
+
+    // close modal
+    const closeModal = () => {
+      $('#mdlRequiredCompetenciesModal').modal('hide');
+    }
+</script>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group fullWidth">
+                            <span class="input-group-addon grpLabel20">Qualification</span>
+                            <select id="ddQualification" class="form-control requiredCompFormDD"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group fullWidth">
+                            <span class="input-group-addon grpLabel">Registration No</span>
+                            <input type="text" id="txtRegNo" class="form-control requiredCompForm"
+                                   onkeyup="restrictInputForSpecialCharacters(this, this.value)"
+                                   onblur="restrictInputForSpecialCharacters(this, this.value)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="input-group fullWidth">
+                            <button id="btnUploadCompetency" onclick="documentUploaderModal()" class="btn btn-default fullWidth requiredNoContent wrap-text-input-group">Upload / View Competency Documents</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group fullWidth">
+                            <span class="input-group-addon grpLabel30">Expiry Date</span>
+                            <input type="text" min="1" max="31" id="txtExpiryDay" placeholder="dd" class="form-control requiredCompForm"
+                                   onblur="formatDayMonth(this,this.value)"
+                                   onkeyup="restrictInputAndChar(this,2)" />
+                            <span class="input-group-addon">/</span>
+                            <input type="text" min="1" max="31" id="txtExpiryMonth" placeholder="mm" class="form-control requiredCompForm"
+                                   onblur="formatDayMonth(this,this.value)"
+                                   onkeyup="restrictInputAndChar(this,2)" />
+                            <span class="input-group-addon">/</span>
+                            <input type="text" min="1990" max="2100" id="txtExpiryYear" placeholder="yyyy" class="form-control requiredCompForm"
+                                   onkeyup="restrictInputAndChar(this,4)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon grpLabel">
+                                Copy Taken (Physical or Digital)
+                            </span>
+                            <span class="input-group-addon"><input type="checkbox" id="chkCopy" /></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group fullWidth">
+                            <span class="input-group-addon grpLabel30">Test Date</span>
+                            <input type="text" id="txtTestDay" placeholder="dd" class="form-control"
+                                   onblur="formatDayMonth(this,this.value)"
+                                   onkeyup="restrictInputAndChar(this,2)" />
+                                <span class="input-group-addon">/</span>
+                            <input type="text" id="txtTestMonth" placeholder="mm" class="form-control"
+                                   onblur="formatDayMonth(this,this.value)"
+                                   onkeyup="restrictInputAndChar(this,2)" />
+                            <span class="input-group-addon">/</span>
+                            <input type="text" id="txtTestYear" placeholder="yyyy" class="form-control"
+                                   onkeyup="restrictInputAndChar(this,4)" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <p class="input-group-addon grpLabel wrap-text-input-group">
+                                Checked With Awarding Body
+                            </p>
+                            <span class="input-group-addon"><input type="checkbox" id="chkChecked" /></span>
+                            <span class="input-group-btn">
+    <button class="btn btn-primary" id="btnCheckCompetencyModal" value="Check CSCS" onclick="checkCompetencyModal()" disabled>Check Now</button>
+    <script nonce="6QITJ/jdy6bab4ikXjRW">
+        $(function() {
+            $.get(isCardCheckerEnabledCntrl)
+                .done(function(data) {
+                    if (data === true)
+                        $("#btnCheckCompetencyModal").enable();
+                });
+        });
+        var isCardCheckerEnabledCntrl = '/Frontend/CardChecker/IsCardCheckerEnabled';
+    </script>
+</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="4buttons">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <button class="btn btn-default fullWidth" id="btnImportCompetencies" onclick="importCompetencies()">Import Competencies</button>
+                            </div>
+                            <div class="col-md-6 pull-right col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-default fullWidth" id="btnClearForm" onclick="clearCompetancyForm()">Clear Form</button>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                        <button class="btn btn-danger fullWidth" id="btnDeleteCompetency" onclick="deleteCompetency()"
+                                                disabled>
+                                            <i id="iDeleteCompetency"
+                                               class="fa fa-lg fa-spinner fa-pulse hidden"></i> Delete
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                        <button class="btn btn-default fullWidth pull-right hidden" id="btnUpdateCompetency">
+                                            <i id="iUpdateCompetency"
+                                               class="fa fa-lg fa-spinner fa-pulse hidden"></i> Update
+                                        </button>
+                                    </div>
+                                    <script nonce="6QITJ/jdy6bab4ikXjRW">
+                                        $('#btnUpdateCompetency').click(function() {
+                                            addCompetency();
+                                        });
+                                    </script>
+                                    <div class="col-md-4 col-sm-12 col-xs-12">
+                                        <button class="btn btn-default fullWidth pull-right" id="btnAddCompetency" 
+                                                onclick="addCompetencyConsideringRequiredUpload()">
+                                            <i id="iAddCompetency" 
+                                               class="fa fa-lg fa-spinner fa-pulse hidden"></i> Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 hidden" id="importButtons">
+                        <div class="row">
+                            <div class="col-md-6 pull-left col-sm-12 col-xs-12">
+                                <button class="btn btn-default fullWidth" id="btnBackToStdCompetencies" onclick="backToCompetencies()">Back</button>
+                            </div>
+                            <div class="col-md-6 pull-right col-sm-12 col-xs-12">
+                                <button class="btn btn-default fullWidth" id="btnImportSingleComp"
+                                        onclick="importSingleComp()">
+                                    <i id="iImportSingleComp"
+                                    class="fa fa-lg fa-spinner fa-pulse hidden"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="onCloseCompetencies()">Close</button>
+                    <button class="btn btn-default pull-right" id="btnSubmitNewOperative"
+                            onclick="submitNewOperative()">
+                    <i id="iSubmitNewOperative"
+                       class="fa fa-lg fa-spinner fa-pulse hidden"></i> Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--script to control-->
+<script src="/Frontend/js/Shared/Partials/manageCompetenciesModal.js?885-SystemTemplateNET"></script>
+
+<!-- new universal(?) uploader-->
+<div class="modal fade" id="mdlDocumentUploader" tabindex="-1" role="dialog" aria-labelledby="h4DocumentUploader">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="btnCloseUploadX"
+                        type="button"
+                        class="close closeBtn"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="h4DocumentUploader">Upload Document</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <div class="text-center fullWidth">File Category</div>
+                    <select id="ddFileCategory" class="input-group fullWidth form-control text-center" onchange="loadDocuments()">
+                            <option value="Competency">Competency</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-body">
+
+                <div id="filesTable">
+                    <table class="grid fullTable table" id="tbFiles">
+                        <tr>
+                            <th width="70%">File Name</th>
+                            <th width="30%"></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 well">
+                        <h4>
+                            <small id="h4Upload" class="text-muted">Upload Operative Documents</small>
+                        </h4>
+                        <hr/>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="fileUpload" onchange="validateDocumentUpload(this, 'btnUpload');" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" id="btnUpload" 
+                                        onclick="uploadClicked()">
+                                    <i id="iUpload"
+                                       class="fa fa-lg fa-spinner fa-pulse hidden">
+                                    </i> Upload
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnCloseUpload" type="button" class="closeBtn btn btn-default pull-left">Close</button>
+                <script nonce="6QITJ/jdy6bab4ikXjRW">
+                    $("#btnCloseUpload").click(function() {
+                        $("#mdlDocumentUploader").modal("hide");
+                    });
+                    $("#btnCloseUploadX").click(function() {
+                        $("#mdlDocumentUploader").modal("hide");
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--back end controls-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var getDocumentsCntrl = '/Frontend/DocumentUploader/LoadSiteFiles';
+   
+    var deleteSiteDocumentCntrl = '/Frontend/DocumentUploader/DeleteSiteDocument';
+    var deleteOperativeDocumentCntrl = '/Frontend/DocumentUploader/DeleteOperativeDocument';
+    var blobBase64Cntrl = '/Frontend/DocumentUploader/GetBase64FromBlobReference';
+    var getAcceptedFileTypesCntrl = '/Frontend/DocumentUploader/GetAcceptedFileTypes';
+    var validateDocumentCntrl = '/Frontend/DocumentUploader/ValidateOnSelectFile';
+
+</script>
+<script src="/Frontend/js/Shared/Partials/fileUploaderFunctions.js"></script>
+<script src="/Frontend/js/Shared/Partials/fileUploader.js"></script>
+<script nonce="6QITJ/jdy6bab4ikXjRW">var uploadDocumentCntrl = '/Frontend/DocumentUploader/UploadOperativeFile'</script>
+<!-- Map User To Online Induction Modal -->
+<div class="modal fade" id="mdlMapUserToOnlineInduction" tabindex="-1" role="dialog" aria-labelledby="h4MapUserToOnlineInduction">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="h4MapUserToOnlineInduction"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="pName" class="text-center">Select Online Induction Course</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well modalTable">
+                            <table class="table table-striped sortable selectable">
+                                <thead>
+                                <tr>
+                                    <th>Induction</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbOnlineInductionCourses"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="btnCloseOnlineInductionModal">Close</button>
+                <button class="btn btn-default" id="btnSubmitOnlineInduction"
+                        onclick="selectSubmitMode()">
+                    <i id="iSubmitOnlineInduction"
+                       class="fa fa-lg fa-spinner fa-pulse hidden"></i> Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--back end controls-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var getUserMappingInductionsCntrl = '/Frontend/OnlineInductions/GetUserMappingInductions';
+    var mapUserToInductionCntrl = '/Frontend/OnlineInductions/MapUserToInduction';
+    var getUserPassedInductionsCntrl = '/Frontend/OnlineInductions/GetUserPassedInductions';
+    var getUserMappedInductionsCntrl = '/Frontend/OnlineInductions/GetUserMappedInductions';
+    var reinductOperativeCntrl = '/Frontend/OnlineInductions/ReinductOperative';
+    var submitOnlineInductionCntrl = '/Frontend/OnlineInductions/SubmitOnlineInduction';
+    var submitAndMapForOnlineInductionCntrl = '/Frontend/OnlineInductions/SubmitForOnlineInductionAndMapIfSingleInduction';
+    var submitForOnlineInductionAndMapToInductionIdCntrl = '/Frontend/OnlineInductions/SubmitForOnlineInductionAndMapToInductionId';
+</script>
+
+<script src="/Frontend/js/Shared/Partials/mapUserToOnlineInductionModal.js"></script>
+
+<style nonce="XgqCN3aMlyKR/rBO9z+t">
+    #mdlCompetencyCardChecker {
+        z-index: 9999;
+    }
+    #dvCardCheckSuccess {
+        display: none; 
+        text-align: center;
+    }
+    #dvCardCheckFail {
+        display: none; 
+        text-align: center;
+    }
+</style>
+<div class="modal fade" id="mdlCompetencyCardChecker" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="btnCancelCardCheckerX" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="lblComps">CITB Card Checker</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group fullWidth">
+                            <span class="input-group-addon grpLabel30">Surname</span>
+                            <input type="text" class="form-control" id="txtCheckerSurname"/>
+                        </div>
+                        <div class="input-group fullWidth">
+                            <span class="input-group-addon grpLabel30">Card No</span>
+                            <input type="text" class="form-control" id="txtCheckerCardNo" onkeyup="restrictInputCharacter(this)"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="dvCardCheckSuccess">
+                    <div class="col-md-12">
+                        <i class="text-center fa fa-4x fa-check text-success"></i>
+                    </div>
+                </div>
+                <div class="row" id="dvCardCheckFail">
+                    <div class="col-md-12">
+                        <i class="text-center fa fa-4x fa-times text-danger"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnCancel" class="btn btn-default pull-left" data-dismiss="modal">
+                    Close
+                </button>
+                <button class="btn btn-primary" onclick="checkCard()" id="btnCardCheckerCheckCard">
+                    <i class="fa fa-lg fa-spinner fa-pulse hidden" id="iCardCheckerCheckCard"></i> 
+                    Check
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var checkCompetencyCardCntrl = '/Frontend/CardChecker/CheckCompetencyCard';
+    var getOperativeSurnameCntrl = '/Frontend/TimeAttendance/GetOperativeSurname';
+    
+    function checkCompetencyModal() {
+        if (operativeID ===0)
+            openCardCheckerFromAddNewOperative();
+        else
+            openCardCheckerFromManageOperatives();
+    }
+
+    function openCardCheckerFromManageOperatives(){
+        $.get(getOperativeSurnameCntrl,{operativeId: operativeID})
+            .done(function(data){
+                if (window.openCardCheckerModal) 
+                    window.openCardCheckerModal(data, $("#txtRegNo").val());
+            })
+            .fail(function(error){showError(error.responseText)});
+    }
+
+    function openCardCheckerFromAddNewOperative(){
+        if (window.openCardCheckerModal)
+            window.openCardCheckerModal($("#txtSurname").val(), $("#txtRegNo").val());
+    }
+
+    function checkCardHook(cardOk){
+        if(cardOk === true) $("#chkChecked").prop("checked", true);
+    }
+    
+    function openCardCheckerModal(surname, cardno) {
+        resetModal();
+        $("#txtCheckerSurname").val(surname);
+        $("#txtCheckerCardNo").val(cardno);
+        $("#mdlCompetencyCardChecker").modal("show");
+    }
+    
+    function resetModal() {
+        $("#dvCardCheckSuccess").hide();
+        $("#dvCardCheckFail").hide();
+    }
+    
+    function checkCard() {
+        resetModal();
+        disableCheckerButton();
+        $.post(checkCompetencyCardCntrl,
+                { surname: $("#txtCheckerSurname").val(), cardNo: $("#txtCheckerCardNo").val() })
+            .done(function(data) {
+                data === true ? $("#dvCardCheckSuccess").show() : $("#dvCardCheckFail").show();
+                enableCheckerButton();
+                if (window.checkCardHook) window.checkCardHook(data);
+            })
+            .fail(function(error) {
+                showError(error.responseJSON.replace(/(?:\\[rn]|[\r\n]+)+/g, " ").replace("UID", "Card No"));
+                enableCheckerButton();
+            });
+    }
+    
+    function disableCheckerButton() {
+        $("#iCardCheckerCheckCard").show();
+        $("#btnCardCheckerCheckCard").disable();
+    }
+    
+    function enableCheckerButton() {
+        $("#iCardCheckerCheckCard").hide();
+        $("#btnCardCheckerCheckCard").enable();
+    }
+</script>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW" id="competencyRowTemplate" type="text/x-jsrender">
+    <tr id="{{:ElementId}}" data-id="{{:UserCompetencyId}}">
+        <td>{{:Name}}</td>
+        <td>{{:Registration}}</td>
+        <td>{{:ExpiryDate}}</td>
+        <td>{{:TestDate}}</td>
+        <td>{{:Copied}}</td>
+        <td>{{:Checked}}</td>
+        <td class="hidden">{{:CompetencyId}}</td>
+        <td class="hidden">generic</td>
+    </tr>
+</script>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var getCompetenciesCntrl = '/Frontend/TimeAttendance/GetCompetencies';
+    var getImportedCompetenciesCntrl = '/Frontend/CSCSImport/GetImportedCompetencies';
+    var getUserCompetenciesCntrl = '/Frontend/TimeAttendance/GetUserCompetencies';
+    var addUserCompetencyCntrl = '/Frontend/TimeAttendance/AddOperativeCompetency';
+    var addImportedCompetencyCntrl = '/Frontend/CSCSImport/AddImportedCompetency';
+    var addUserCompetenciesCntrl = '/Frontend/TimeAttendance/AddUserWithCompetencies';
+    var updateUserCompetencyCntrl = '/Frontend/TimeAttendance/UpdateOperativeCompetency';
+    var deleteUserCompetencyCntrl = '/Frontend/TimeAttendance/DeleteOperativeCompetency';
+    var isOperativeSelectedCriticalCompetencyCntrl = '/Frontend/TimeAttendance/IsOperativeSelectedCriticalCompetency';
+    var isCardCheckerEnabledCntrl = '/Frontend/CardChecker/IsCardCheckerEnabled';
+    var checkIsUpdateAccessExpiryCntrl = '/Frontend/TimeAttendance/IsUpdateAccessExpiry';    
+    var competenciesRequireUploadCntrl = '/Frontend/TimeAttendance/CheckCompetenciesRequireUpload';
+
+    function rebuildCompetencyTable() {
+        $.ajax({
+            url: getUserCompetenciesCntrl,
+            type: "POST",
+            data: JSON.stringify({
+                id: operativeID
+            }),
+            dataType: "json",
+            traditional: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#tbCompetencies').empty();
+                for (var c in data) {
+                    var row = $.templates("#competencyRowTemplate").render({
+                        ElementId: "Competency_" + data[c].ID,
+                        UserCompetencyId: data[c].ID,
+                        Name: data[c].CompetencyName,
+                        Registration: data[c].RegNo,
+                        ExpiryDate: data[c].ExpiryDate,
+                        TestDate: data[c].TestDate,
+                        Copied: data[c].CopyTaken,
+                        Checked: data[c].Checked,
+                        CompetencyId: data[c].CompetencyID
+                    });
+                    $('#tbCompetencies').append(row);
+                }
+                addAdditionalCompetencies();
+            },
+            error: function (error) {
+                showErrorModal(error);
+            }
+        });
+    }
+
+    function selectCompRow(cntrl, id) {
+        if (id !== undefined) {
+            $('#tbCompetencies tr').each(function () {
+                $(this).removeClass('rowSelected');
+            });
+    
+            if ($('#btnImportSingleComp').is(":visible")) {
+                $('#btnImportSingleComp').enable();
+            }
+    
+            selectedCompID = id;
+    
+            $(cntrl).addClass('rowSelected');
+            var tempIDstring = $('#tbCompetencies .rowSelected').attr('id');
+            tempCompName = tempIDstring.substr(0, tempIDstring.indexOf('_') + 1);
+    
+            // get data from table
+            var comp = $("#" + tempCompName + id + ' td').eq('0').text();
+            var regNo = $("#" + tempCompName + id + ' td').eq('1').text();
+            var expDate = $("#" + tempCompName + id + ' td').eq('2').text();
+            expDate = expDate.split('/');
+            var testDate = $("#" + tempCompName + id + ' td').eq('3').text();
+            testDate = testDate.split('/');
+            var copy = $("#" + tempCompName + id + ' td').eq('4').text() === 'Yes';
+            var check = $("#" + tempCompName + id + ' td').eq('5').text() === 'Yes';
+    
+            selectedCSCSCardNo = regNo;
+
+            // load data to form
+            $('#ddQualification option').each(function () {
+                if ((this.text.toUpperCase()).replace(/\s/g, '') === (comp.toUpperCase()).replace(/\s/g, '')) {
+                    this.selected = true;
+                }
+            });
+    
+            $('#txtRegNo').val(regNo);
+            $('#txtExpiryDay').val(expDate[0]);
+            $('#txtExpiryMonth').val(expDate[1]);
+            $('#txtExpiryYear').val(expDate[2]);
+            $('#txtTestDay').val(testDate[0]);
+            $('#txtTestMonth').val(testDate[1]);
+            $('#txtTestYear').val(testDate[2]);
+            $('#chkCopy').prop('checked', copy);
+            $('#chkChecked').prop('checked', check);
+    
+            $('#btnUpdateCompetency').disable();
+            $('#btnDeleteCompetency').disable();
+            $('#btnClearForm').text('Cancel');
+            $('#btnAddCompetency').hide();
+            $('#btnUpdateCompetency').show();  
+            if ((typeof canEditCompetencies !== 'undefined' ? canEditCompetencies == true : false) ||
+                (typeof isAdmin !== 'undefined' ? isAdmin == true : false) || 
+                (viewBagTitle === "AddNewOperative")) {
+                $('#btnUpdateCompetency').enable();
+                $('#btnDeleteCompetency').enable();                
+            }
+        }
+    }
+
+    function addCompetencyToExistingUser(updateExpiryDate) {
+        var _url = (selectedCompID === 0) ? addUserCompetencyCntrl : updateUserCompetencyCntrl;
+
+        var _expiryDate = $('#txtExpiryDay').val() + '/' + $('#txtExpiryMonth').val() + '/' + $('#txtExpiryYear').val();
+        if (_expiryDate === '//') _expiryDate = '';
+
+        var _testDate = $('#txtTestDay').val() + '/' + $('#txtTestMonth').val() + '/' + $('#txtTestYear').val();
+        if (_testDate === '//' || _testDate === 'undefined/undefined/undefined') _testDate = '';
+
+        $.ajax({
+            url: _url,
+            type: "POST",
+            data: JSON.stringify({
+                UserID: operativeID,
+                CompetencyID: $('#ddQualification').val(),
+                RegNo: $('#txtRegNo').val(),
+                ExpiryDate: _expiryDate,
+                TestDate: _testDate,
+                CopyTaken: $('#chkCopy').is(':checked'),
+                Checked: $('#chkChecked').is(':checked'),
+                UserCompID: selectedCompID,
+                UpdateExpiryDate: updateExpiryDate,
+                UpdateManualAccessExpiry: updateExpiryDate
+            }),
+            dataType: "json",
+            traditional: true,
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                $('#mdlConfirmUpdateOperativeExpiryDate').modal('hide');
+                $('#btnAddCompetency').enable();
+                $('#btnUpdateCompetency').enable();
+                $('#iAddCompetency').hide();
+                $('#iUpdateCompetency').hide();
+                $('#pMsg').text(data);
+                $('#mdlDialogue').modal('show');
+                clearCompetancyForm();
+                rebuildCompetencyTable();
+            },
+            error: function (error) {
+                $('#mdlConfirmUpdateOperativeExpiryDate').modal('hide');
+                $('#btnAddCompetency').enable();
+                $('#iAddCompetency').hide();
+                showErrorModal(error);
+            }
+        });
+    }
+
+    function clearCompetancyForm() {
+        $('#btnDeleteCompetency').disable();
+        $('#btnClearForm').text('Clear Form');
+        $('#chkCopy').attr('checked', false);
+        $('#chkChecked').attr('checked', false);
+        $('#tbCompetencies tr').each(function () {
+            $(this).removeClass('rowSelected');
+        });
+        selectedCompID = 0;
+        $('#mdlCompetencies input:not(:radio)').each(function () {
+            $(this).val('');
+        });
+        $('#mdlCompetencies input:radio').each(function () {
+            $(this).prop('checked', false);
+        });
+        $('#ddQualification').val('0');
+        $('#btnUpdateCompetency').hide();
+        $('#btnAddCompetency').show();
+        $('#lblExpiryDate').removeClass('requiredFieldNew');
+    }
+
+    function addCompetency() {
+        if (!validateCompetencyForm()) {
+            $('#btnAddCompetency').enable();
+            $('#iAddCompetency').hide();
+            return;
+        }
+
+        var _expiryDate = $('#txtExpiryDay').val() + '/' + $('#txtExpiryMonth').val() + '/' + $('#txtExpiryYear').val();
+        if (_expiryDate === '//') _expiryDate = '';
+
+        var _testDate = $('#txtTestDay').val() + '/' + $('#txtTestMonth').val() + '/' + $('#txtTestYear').val();
+        if (_testDate === '//' || _testDate === 'undefined/undefined/undefined') _testDate = '';
+
+        if (!operativeID) {
+            var tempCopied = $('#chkCopy').is(':checked') ? 'Yes' : 'No';
+            var tempChecked = $('#chkChecked').is(':checked') ? 'Yes' : 'No';
+
+            if (selectedCompID !== 0) {
+                var _updatedCompetencyRow = $.templates("#competencyRowTemplate").render({
+                    ElementId: tempCompName + $('#ddQualification').val(),
+                    UserCompetencyId: tempCompName + $('#ddQualification').val(),
+                    Name: $('#ddQualification :selected').text(),
+                    Registration: $('#txtRegNo').val(),
+                    ExpiryDate: _expiryDate,
+                    TestDate: _testDate,
+                    Copied: tempCopied,
+                    Checked: tempChecked,
+                    CompetencyId: $('#ddQualification :selected').val()
+                });
+
+                $("#" + tempCompName + selectedCompID).replaceWith(_updatedCompetencyRow);
+
+                for (var i in additionalComps) {
+                    if (additionalComps[i].includes('class="hidden">' + selectedCompID)) {
+                        additionalComps.splice(i, 1);
+                    }
+                }
+
+                additionalComps.push(_updatedCompetencyRow);
+            } else {
+                var _newCompetencyRow =$.templates("#competencyRowTemplate").render({
+                    ElementId: "Competency_" + $('#ddQualification').val(),
+                    UserCompetencyId: $('#ddQualification').val(),
+                    Name: $('#ddQualification :selected').text(),
+                    Registration: $('#txtRegNo').val(),
+                    ExpiryDate: _expiryDate,
+                    TestDate: _testDate,
+                    Copied: tempCopied,
+                    Checked: tempChecked,
+                    CompetencyId: $('#ddQualification :selected').val()
+                });
+
+                $('#tbCompetencies').append(_newCompetencyRow);
+                additionalComps.push(_newCompetencyRow);
+
+                $('#btnAddCompetency').enable();
+            }
+            clearCompetancyForm();
+        } else {
+            $('#btnAddCompetency').disable();
+            $('#iAddCompetency').show();
+            $('#btnUpdateCompetency').disable();
+            $('#iUpdateCompetency').show();
+            $.ajax({
+                url: checkIsUpdateAccessExpiryCntrl,
+                type: "POST",
+                data: JSON.stringify({
+                    operativeId: operativeID,
+                    competencyId: $('#ddQualification').val()
+                }),
+                dataType: "json",
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                success: function(data) {
+                    if (data === true) {
+                        $('#mdlConfirmUpdateOperativeExpiryDate').modal('show');
+                    } else {
+                        addCompetencyToExistingUser(false);
+                    }
+                },
+                error: function(error) {
+                    $('#btnAddCompetency').enable();
+                    $('#iAddCompetency').hide();
+                    $('#btnUpdateCompetency').enable();
+                    $('#iUpdateCompetency').hide();
+                    showErrorModal(error);
+                }
+            });
+        }
+    }
+
+    function deleteCompetency() {
+        $('#btnDeleteCompetency').disable();
+        $('#iDeleteCompetency').show();
+        if (!checkCompSelected()) {
+            $('#btnDeleteCompetency').enable();
+            $('#iDeleteCompetency').hide();
+            return;
+        }
+
+        if (operativeID === null || operativeID === 0) {
+            $('#tbCompetencies .rowSelected').remove();
+            $('#btnDeleteCompetency').enable();
+            $('#iDeleteCompetency').hide();
+
+            for (var i in additionalComps) {
+                if (additionalComps[i].includes($('#txtRegNo').val())) {
+                    additionalComps.splice(i, 1);
+                }
+            }
+
+            clearCompetancyForm();
+        } else {
+            $.ajax({
+                url: deleteUserCompetencyCntrl,
+                type: "POST",
+                data: JSON.stringify({
+                    UserCompetencyID: selectedCompID
+                }),
+                dataType: "json",
+                traditional: true,
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $('#btnDeleteCompetency').enable();
+                    $('#iDeleteCompetency').hide();
+                    $('#pMsg').text(data);
+                    $('#mdlDialogue').modal('show');
+                    rebuildCompetencyTable();
+                    clearCompetancyForm();
+                },
+                error: function (error) {
+                    $('#btnDeleteCompetency').enable();
+                    $('#iDeleteCompetency').hide();
+                    showErrorModal(error);
+                }
+            });
+        }
+    }    
+
+</script>
+
+
+    <script nonce="6QITJ/jdy6bab4ikXjRW">
+        function operativeAddedSuccess(data) {
+            window.location = "/Frontend/Onboarding/AddOperativeCompleted" + "?id=" + data.msg;
+        }
+    </script>
+
+<!--back end controllers-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var getFormattedAddressByPostcodeCntrl = '/Frontend/Distance/GetFormattedAddressByPostcode';
+    var addOperativeCntrl = '/Frontend/Goldbeck/GoldbeckTimeAttendance/AddOperative';
+    var getDistanceCntrl = '/Frontend/Distance/GetDrivingDistanceInMiles';
+    var getDirectDistanceCntrl = '/Frontend/Distance/GetDirectDistanceInMiles';
+    var getInductionAvailabilityCntrl = '/Frontend/TimeAttendance/GetInductionAvailability';
+    var getInductionAvailabilityByCourseCntrl = '/Frontend/TimeAttendance/GetInductionAvailabilityByCourse';
+    var getFirstAllowedInductionDayFromCourseCntrl = '/Frontend/TimeAttendance/GetFirstAllowedInductionDayFromCourse';
+    var operativeReviewCompleteCntrl = '/Frontend/Onboarding/OperativeReviewComplete';
+    var updateInductionRecordCntrl = "/Frontend/OnlineInductions/UpdateInductionRecordIfRequired";
+    var addUserCompetenciesCntrl = '/Frontend/Goldbeck/GoldbeckTimeAttendance/AddUserWithCompetencies';
+</script>
+</div>
+<div id="divBackground"></div>
+<div id="loadPanel"></div>
+<script>
+    var loadPanel = $('#loadPanel').dxLoadPanel({
+        shadingColor: "rgba(0,0,0,0.4)",
+        visible: false,
+        showIndicator: true,
+        showPane: true,
+        shading: true,
+        closeOnOutsideClick: false
+    }).dxLoadPanel("instance");
+
+    $(document).ajaxStart(function () {
+        loadPanel.show();
+        // setTimeout(() => loadPanel.hide(), 500);    // Kier anti-loading hack
+    }).ajaxStop(function () {
+        loadPanel.hide();
+    });
+</script>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="mdlErrors">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"><i class="fa fa-lg fa-exclamation-triangle" aria-hidden="true"></i> Error</h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center" id="pErrorMsg"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnErrorModalOk">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    $("#btnErrorModalOk").click(function() { showErrorOkFunction(); });
+</script>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    /**
+    * Returns formatted error response depending on Http request result.
+    */
+    function generateFormattedErrorResponse(error){
+        if (!!error.responseJSON){
+            if (!!error.responseJSON.Message){
+                return error.responseJSON.Message; 
+            } else {
+                return error.responseJSON.replace(/['"]+/g, '');
+            }
+        }
+        else if (!!error.responseText){
+            return error.responseText.replace(/['"]+/g, '');
+        }
+    }
+    
+    function showErrorModal(error) {
+        $('#pErrorMsg').text(generateFormattedErrorResponse(error));
+        $("#mdlErrors").modal("show");
+    }
+</script>
+<div class="modal fade" tabindex="-1" role="dialog" id="mdlDialogue">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span><i class="fa fa-2x fa-comments-o" aria-hidden="true"></i></span>
+                <button id="btnCloseDialogue" type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="pMsg" class="text-center"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnDialogueOK">Ok</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    $("#btnDialogueOK").click(function() { showSuccessOkFunction(); });
+    
+    function showDialogueModal(text) {
+        $("#pMsg").text(text);
+        $("#mdlDialogue").modal("show");
+    }
+</script>
+<div class="modal fade" tabindex="-1" role="dialog" id="mdlHelpDialogue">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span><i class="fa fa-2x fa-question-circle" aria-hidden="true"></i></span>
+                <button id="btnCloseHelpDialogue" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="pHelpDialogText" class="text-center"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnHelpDialogueOK">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    $(".helpDialogIcon").on("click", function () {
+        $("#pHelpDialogText").text($(this).attr("title"));
+        $("#mdlHelpDialogue").modal("show");
+    })
+</script>
+<style nonce="6QITJ/jdy6bab4ikXjRW">
+    #mdlPleaseWait {
+        z-index: 9999;
+    }
+</style>
+<div class="modal fade" id="mdlPleaseWait" tabindex="-1" role="dialog" aria-labelledby="h4PleaseWait">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div id="iPleaseWait" class="fa fa-5x fa-spinner fa-pulse"></div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <h3>Please Wait...</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    $(document).ready(function() {
+        $.post("/Frontend/Tooltips/GetTooltips",
+            {
+                action: "AddNewOperative", controller: "GoldbeckTimeAttendance"
+            })
+            .success(function(tooltips) {
+                try {
+                    if (!Array.isArray(tooltips)) {
+                        tooltips = JSON.parse(tooltips);
+                    }
+                    tooltips.forEach(function(tooltip) {
+                        $("#" + tooltip.Id).popover({
+                            title: "ℹ️  " +tooltip.Title,
+                            content: tooltip.Content,
+                            trigger: "hover",
+                            container: "body",
+                            html: true,
+                            animation: false,
+                            placement: tooltip.Placement == null ? "auto" : tooltip.Placement
+                        });
+                    });
+                } catch (e) {
+                    return;
+                }
+            });
+    });
+</script>
+
+<!--back end controls-->
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var viewBagTitle = "AddNewOperative";
+    var loadRequiredFieldsCntrl = '/Frontend/RequiredFields/GetRequiredFields';
+</script>
+
+<script src="/Frontend/js/Shared/requiredFields.js"></script>
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="mdlSessionMismatchErrors">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="mdlSessionMismatchErrorsHeader">
+                <button type="button" class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        id="btnSessionMismatchErrorModalDismiss">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title"><i class="fa fa-lg fa-exclamation-triangle" aria-hidden="true"></i> Error</h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center" id="pSessionMismatchErrorMsg"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btnSessionMismatchErrorModalOk">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    $("#btnSessionMismatchErrorModalOk").click(function() { window.location = '/Frontend/'; });
+    $("#btnSessionMismatchErrorModalDismiss").click(function() { window.location = '/Frontend/'; });
+</script>
+<div id="tstError"></div>
+
+<style>
+  .dx-toast-content {"white-space: pre-line"}
+</style>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+  function initToast_tstError(content) {
+    $('#tstError').dxToast({
+      type: 'error',
+        message: content,
+      displayTime: 3000,
+    });
+  }
+  
+  function setToastContent_tstError(content) {    
+    if ("False" === "True") {
+      $('#tstError').dxToast('instance').option({type: "error", contentTemplate: content});
+    }
+    else {
+      $('#tstError').dxToast('instance').option('message', content);
+    }
+  }
+  
+  function showToast_tstError() {
+    $('#tstError').dxToast('instance').show();
+  }
+</script>
+
+<script nonce="6QITJ/jdy6bab4ikXjRW">
+    var backgroundImageCntrl = 'https://www.datascopesystem.com/Goldbeck/Files/Image/background.png';
+    var goHomeCntrl = '/Frontend/';
+    var getCurrentSessionId = '/Frontend/Session/GetEncryptedSessionIdCookie';
+    const sessionId = 'Fox8ZQ5sDW0CC3mpSTZk6XkPlkMV7BlQSsBxuBmm5fWRB8zmruZPlYuiVNXzIJeu7HGjfNdqh4pNakVB6xicSGpEZwvtNpQVLvu59W6UPLaedEM2UaxrA3f/63f0aJMf5OH1b1rA1fYszzwinE3VJBUlRmBpRekuQCKajqnddY3AxYdCVl7LxIXCa3VONysLMJDBV44wyMDLkdRGK1Ldx9fbMoOc+MQ+3ypfHNHQ6go3GhoEe3Kc8M/MDOe3TtGHqO7sibkZ9Fy7XIbbajul2KUKTPT7Qri9H8nnCrT5bZdx8WXoGrmLWuFUlCHQSSd5VZyoizPZQ2qe0cCzQO2iIDvOxTMIO7gFtIcBzbcAVu0iyZyxq1lUPtuwvw==';
+    var currentSessionId = sessionId;
+
+    window.addEventListener("focus", function (event) {
+        $.ajax({
+            type: "GET",
+            global: false,
+            url: getCurrentSessionId
+        }).done(function (data) {
+            currentSessionId = data;
+            if (sessionId !== currentSessionId && true) {
+                showSessionMismatchError("Session mis-match detected. Any changes to the current page will not be saved. " +
+                    "Close this window to return to the homepage of the latest system accessed.");
+            }
+        });
+    });
+</script>
+</body>
+</html>
