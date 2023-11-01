@@ -1,7 +1,10 @@
 import time
 import random
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request,send_file
 import hashed
+from werkzeug.utils import secure_filename
+import os
+
 
 app = Flask(__name__)
 
@@ -38,10 +41,25 @@ def register():
         print(f'State Code is {code}')
 
 
-    
-
     return render_template ('register.html')
 
+
+
+@app.route('/upload', methods=['GET','POST'])
+def upload_file():
+    if 'file' in request.files:
+        try:
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            # Here you should save the file
+            file.save(os.path.join("uploads/", filename)) ## Saves the file to uploads folders. 
+
+            print('File uploaded successfully')
+
+            return render_template('upload_form.html')
+        except:
+            print("Error saving file")
+            return render_template('upload_form.html')
 
 def main():
     app.run(debug=True)
