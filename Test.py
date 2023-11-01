@@ -48,18 +48,15 @@ def register():
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
     if 'file' in request.files:
-        try:
-            file = request.files['file']
-            filename = secure_filename(file.filename)
-            # Here you should save the file
-            file.save(os.path.join("uploads/", filename)) ## Saves the file to uploads folders. 
+        file = request.files['file']
+        filename = secure_filename(file.filename)
+        # Here you should save the file
+        file.save(os.path.join("uploads/", filename)) ## Saves the file to uploads/ 
 
-            print('File uploaded successfully')
+        print('File uploaded successfully')
 
-            return render_template('upload_form.html')
-        except:
-            print("Error saving file")
-            return render_template('upload_form.html')
+    return render_template('upload_form.html')
+
 
 def main():
     app.run(debug=True)
