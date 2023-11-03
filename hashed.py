@@ -1,6 +1,6 @@
 
 import hashlib  # this allow me to hash my passwords
-
+from users_database import get_users
 def readtextfile(filename):
     splitedline = []
 
@@ -34,17 +34,19 @@ def encrypt(value="0"):
 def registation(username="admin", password="admin"):  # Registation Default is admin,admin. 
     # Need to check if username exists; If it does return error code (-1) . 
     # # As the DB has not been made - Using a Txt file 
-    accounts = readtextfile('Database/account.txt')
-    for each in accounts:
-        if each[0].lower() == username.lower():
-            return (-1)
-    
-    hash_value = encrypt(password)
 
-    value = f'\n{username},{hash_value}'
-    f = open('Database/account.txt', 'a+')
-    f.write(value)
-    f.close()
+    db = get_users()
+
+    check_username = db.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
+    if check_username:
+        return -1 
+
+    hashed_password = encrypt(password)  # Use your custom encrypt function
+   
+
+    db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed_password])
+
+    db.commit()
 
     return 0
 
@@ -54,24 +56,19 @@ def login(username="admin", password="admin"):  # this the login subroutine
     # Need to check if username exists; If it does return error code (-1) . 
     # # As the DB has not been made - Using a Txt file 
 
-    accounts = readtextfile('Database/account.txt')
-    state = False
-
-    for each in accounts:
-        if each[0].lower() == username.lower():
-            state = True
-
-            break
-
-    if state == False:
-        return 0
+    db = get_users()    
+    # Check if the username exists in the database
+    user_data = db.execute('SELECT username, password FROM users WHERE username = ?', (username)).fetchone()
+    if user_data is None:
+        return -1  # Username does not exist
     
     hash_value = encrypt(password)
     
-    if hash_value == each[1] or (hash_value+'\n') == each[1]:
-        return 1
+    hashed_password = encrypt(password)  # Use your custom encrypt function
+    if hashed_password == user_data['password']:
+        return 1  # Login successful
     else:
-        return -1 
+        return 0  # Incorrect password
 
 
 

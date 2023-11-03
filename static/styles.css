@@ -1,0 +1,32 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.logo img {
+    max-height: 50px;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
