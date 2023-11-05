@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #20232a;
+    color: #61dafb;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: space-between; /* Evenly distribute items */
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #61dafb;
+    font-weight: bold;
+    transition: color 0.2s;
+    display: block;
+    padding: 10px 0;
+}
+
+nav ul li a:hover {
+    color: #ff6b6b;
+}
+
+.user-info {
+    background-color: #f9f1f1;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+h1, h2, p {
+    text-align: center; /* Set text alignment to left */
+    margin-left: 20px; /* Add some left margin for better readability */
+    color: #333;
+}
+
+/* Rest of your CSS remains the same */

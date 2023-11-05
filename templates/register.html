@@ -7,7 +7,8 @@
     <title>Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-</head>    
+</head> 
+
 <body>    
     <div class="center-text">
         <h1>Employee Registration Page</h1>   
@@ -18,11 +19,17 @@
                 <input type="text" placeholder="Enter Username" name="username" required>  
                 <label>Password:</label>   
                 <input type="password" placeholder="Enter Password" name="password" required>  
+                <label>Role:</label>   
+                <input type="text" placeholder="Enter Role" name="role" required>  
                 <button type="submit">Register</button>   
                 <input type="checkbox" checked="checked"> Remember me   
+                
             
 			</div>   
         </form>
+                {% if error %}
+                <p class="bg-danger text-center text-light" style="color: red ">{{ error }}</p>
+                {% endif %}  
         <p><a class="login-link" href=" {{url_for('login')}}">Already have an account? Login</a></p>
     </div>
 </body>

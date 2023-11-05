@@ -31,7 +31,7 @@ def encrypt(value="0"):
 
     return final_hash
 
-def registation(username="admin", password="admin"):  # Registation Default is admin,admin. 
+def registation(username="admin", password="admin", role="stamper" ):  # Registation Default is admin,admin. 
     # Need to check if username exists; If it does return error code (-1) . 
     # # As the DB has not been made - Using a Txt file 
 
@@ -42,7 +42,7 @@ def registation(username="admin", password="admin"):  # Registation Default is a
         return -1 
 
     hashed_password = encrypt(password)  # Use your custom encrypt function
-   
+    role = None
 
     db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed_password])
 
@@ -58,7 +58,7 @@ def login(username="admin", password="admin"):  # this the login subroutine
 
     db = get_users()    
     # Check if the username exists in the database
-    user_data = db.execute('SELECT username, password FROM users WHERE username = ?', (username)).fetchone()
+    user_data = db.execute('SELECT username, password FROM users WHERE username = ?', (username,)).fetchone()
     if user_data is None:
         return -1  # Username does not exist
     
