@@ -36,13 +36,13 @@
             {% if employees %}
                 {% for emp in employees %}
                     <tr>
-                        <th scope="row">{{ emp["id"] }}</th>
-                        <td>{{ emp["username"] }}</td>
-                        <td>{{ emp["role"] }}</td>
-                        <td>{{ emp["admin"] }}</td>
-                        <td><a class="btn btn-sm btn-outline-success" href="{{ url_for('promotetoadmin', empid = emp['id']) }}"> PROMOTE</a></td>
-                        <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('revoke', empid = emp['id']) }}"> REVOKE</a></td>
-                        <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('deleteuser', empid = emp['id']) }}">DELETE</a></td>
+                        <th scope="row">{{ emp["AccountsID"] }}</th>
+                        <td>{{ emp["Username"] }}</td>
+                        <td>{{ emp["Role"] }}</td>
+                        <td>{{ emp["Admin"] }}</td>
+                        <td><a class="btn btn-sm btn-outline-success" href="{{ url_for('promotetoadmin', empid = emp['AccountsID']) }}"> PROMOTE</a></td>
+                        <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('revoke', empid = emp['AccountsID']) }}"> REVOKE</a></td>
+                        <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('deleteuser', empid = emp['AccountsID']) }}">DELETE</a></td>
                     </tr>
                 {% endfor %}    
             {% endif %}

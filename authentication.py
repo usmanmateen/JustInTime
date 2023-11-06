@@ -3,7 +3,7 @@ from users_database import get_users
 
 def check_username_password(username, password):
     db = get_users()
-    user = db.execute('SELECT * FROM users WHERE username = ? ', (username,)).fetchone()
+    user = db.execute('SELECT * FROM Accounts WHERE username = ? ', (username,)).fetchone()
 
     if user and user['password'] == encrypt(password):
         return True
@@ -12,7 +12,7 @@ def check_username_password(username, password):
 
 def check_username(username):
     db = get_users()
-    user = db.execute('SELECT * FROM users WHERE username = ? ', (username,)).fetchone()
+    user = db.execute('SELECT * FROM Accounts WHERE username = ? ', (username,)).fetchone()
 
     if user:
         return True
