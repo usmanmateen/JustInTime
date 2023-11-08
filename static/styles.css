@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    background: url('splash.png');
+    background-size: cover; /* Scale the image to cover the entire form */
+    opacity: 1;
+}
+
+header {
+    background-color: #20232a;
+    color: #61dafb;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: space-between; /* Evenly distribute items */
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #61dafb;
+    font-weight: bold;
+    transition: color 0.2s;
+    display: block;
+    padding: 10px 0;
+}
+
+nav ul li a:hover {
+    color: #ff6b6b;
+}
+
+.user-info {
+    background-color: #f9f1f1;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 36px;
+    color: #333;
+}
+/* Add this to your CSS file */
+/* Style the table */
+/* Style the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: rgb(247, 237, 237);
+    background-color: #f2f2f2; /* Light gray background */
+}
+
+/* Style table headers and cells */
+.th, .td {
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.th {
+    background-color: #333; /* Dark gray */
+    color: white;
+    font-weight: bold;
+    border: 1px solid #333;
+}
+
+/* Style even table rows */
+.tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style table rows on hover */
+.tr:hover {
+    background-color: #c0c0c0; /* Slightly darker gray */
+}
+
+.user-info {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-info span {
+    font-weight: bold;
+}
+
+/* Additional styles for paragraphs or other elements */
+p {
+    font-size: 16px;
+    color: rgb(247, 237, 237);
+}
+

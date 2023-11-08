@@ -1,0 +1,24 @@
+{% macro links(user)%}
+
+    <ul>
+        {%if not user %}
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        <li><a href="{{ url_for('register') }}">Register</a></li>
+        {%endif%}
+        {% if user %}
+        <li><a href="{{ url_for('upload_file') }}">Upload</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% endif %}
+        {% if user and user[ 'admin'] == 1 %}
+        <li><a href="{{ url_for('promote') }}">Manage Users</a></li>
+        {% endif %}
+        <li><a href="#contact">Contact Us</a></li>
+        <li>
+            {% if user %}
+                <div class="user-info">
+                    <p>Welcome, <span>{{ user['username'] }}</span></p>
+                </div>
+            {% endif %}
+        </li>
+    </ul>
+{%endmacro%}                

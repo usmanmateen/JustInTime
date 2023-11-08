@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
-
+<h2>Login page</h2>
 <body>
     <div class="center-text">
         <h1>Employee Login</h1>
@@ -23,7 +25,10 @@
                 <input type="checkbox" checked="checked"> Remember me
             </div>
         </form>
-        <h2>Login page</h2>
+        
+            {% if error %}
+                <div class="bg-danger border border-light text-center text-light" style="color: red">{{ error }}</div>
+             {% endif %}  
         <a class="register-link" href=" {{url_for('register')}}">Don't have an account? Sign up</a>
     </div>
 </body>

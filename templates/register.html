@@ -7,22 +7,39 @@
     <title>Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-</head>    
+</head> 
+
 <body>    
     <div class="center-text">
         <h1>Employee Registration Page</h1>   
         <form method="POST" action="/register" >  
             
 			<div class="container">   
+                <label>First Name:</label>   
+                <input type="text" placeholder="First Name" name="firstname" required> 
+                <label>Last Name:</label>   
+                <input type="text" placeholder="Last Name" name="lastname" required>  
+                <label>Email:</label>   
+                <input type="text" placeholder="Email address" name="email" required> 
+                <label>Contact No:</label>   
+                <input type="text" placeholder="Contact" name="contact" required> 
                 <label>Username:</label>   
                 <input type="text" placeholder="Enter Username" name="username" required>  
                 <label>Password:</label>   
                 <input type="password" placeholder="Enter Password" name="password" required>  
+                <label>Role:</label>   
+                <input type="text" placeholder="Enter Role" name="role" required>  
+                <label>Token:</label>   
+                <input type="text" placeholder="Enter Token" name="token" >  
                 <button type="submit">Register</button>   
                 <input type="checkbox" checked="checked"> Remember me   
+                
             
 			</div>   
         </form>
+                {% if error %}
+                <p class="bg-danger text-center text-light" style="color: red ">{{ error }}</p>
+                {% endif %}  
         <p><a class="login-link" href=" {{url_for('login')}}">Already have an account? Login</a></p>
     </div>
 </body>

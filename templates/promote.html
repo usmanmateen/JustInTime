@@ -1,0 +1,56 @@
+{%from 'links.html' import links %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to FloatFry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='float_fry_logo.png') }}" alt="Float Fry Logo">
+        </div>
+        <nav>
+            {{links(user)}}
+        </nav>
+    </header>
+    <h1>Access Control</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">USERNAME</th>
+            <th scope="col">ROLE</th>
+            <th scope="col">ADMIN</th>
+            <th scope="col">PROMOTE</th>
+            <th scope="col">REVOKE</th>
+            <th scope="col">DELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if employees %}
+                {% for emp in employees %}
+                    <tr>
+                        <th scope="row">{{ emp["AccountsID"] }}</th>
+                        <td>{{ emp["Username"] }}</td>
+                        <td>{{ emp["Role"] }}</td>
+                        <td>{{ emp["Admin"] }}</td>
+                        <td><a class="btn btn-sm btn-outline-success" href="{{ url_for('promotetoadmin', empid = emp['AccountsID']) }}"> PROMOTE</a></td>
+                        <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('revoke', empid = emp['AccountsID']) }}"> REVOKE</a></td>
+                        <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('deleteuser', empid = emp['AccountsID']) }}">DELETE</a></td>
+                    </tr>
+                {% endfor %}    
+            {% endif %}
+        </tbody>
+      </table>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
