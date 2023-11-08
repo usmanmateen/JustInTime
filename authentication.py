@@ -1,8 +1,8 @@
 from hashed import encrypt
-from users_database import get_users
+from users_database import get_db
 
 def check_username_password(username, password):
-    db = get_users()
+    db = get_db()
     user = db.execute('SELECT * FROM Accounts WHERE username = ? ', (username,)).fetchone()
 
     if user and user['password'] == encrypt(password):
@@ -11,7 +11,7 @@ def check_username_password(username, password):
         return False
 
 def check_username(username):
-    db = get_users()
+    db = get_db()
     user = db.execute('SELECT * FROM Accounts WHERE username = ? ', (username,)).fetchone()
 
     if user:

@@ -9,8 +9,9 @@ def connect_database():
 
     return sql
 
-def get_users():
+def get_db():
     
     if not hasattr(g, 'FloatFry_db'):
         g.FloatFry_db = connect_database()
     return g.FloatFry_db
+

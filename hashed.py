@@ -1,6 +1,6 @@
 
 import hashlib  # this allow me to hash my passwords
-from users_database import get_users
+from users_database import get_db
 
 def readtextfile(filename):
     splitedline = []
@@ -36,16 +36,16 @@ def registation(username="admin", password="admin", role="stamper" ):  # Regista
     # Need to check if username exists; If it does return error code (-1) . 
     # # As the DB has not been made - Using a Txt file 
 
-    db = get_users()
+    db = get_db()
 
-    check_username = db.execute('SELECT * FROM users WHERE username = ?', (username,)).fetchone()
+    check_username = db.execute('SELECT * FROM Accounts WHERE Username = ?', (username,)).fetchone()
     if check_username:
         return -1 
 
     hashed_password = encrypt(password)  # Use your custom encrypt function
     role = None
 
-    db.execute('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashed_password])
+    db.execute('INSERT INTO Accounts (Username, Password) VALUES (?, ?)', [username, hashed_password])
 
     db.commit()
 
@@ -57,9 +57,9 @@ def login(username="admin", password="admin"):  # this the login subroutine
     # Need to check if username exists; If it does return error code (-1) . 
     # # As the DB has not been made - Using a Txt file 
 
-    db = get_users()    
+    db = get_db()    
     # Check if the username exists in the database
-    user_data = db.execute('SELECT username, password FROM users WHERE username = ?', (username,)).fetchone()
+    user_data = db.execute('SELECT Username, Password FROM Accounts WHERE Username = ?', (username,)).fetchone()
     if user_data is None:
         return -1  # Username does not exist
     

@@ -3,6 +3,9 @@ body {
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
+    background: url('splash.png');
+    background-size: cover; /* Scale the image to cover the entire form */
+    opacity: 1;
 }
 
 header {
@@ -60,32 +63,38 @@ h1 {
     color: #333;
 }
 /* Add this to your CSS file */
+/* Style the table */
+/* Style the table */
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    color: rgb(247, 237, 237);
+    background-color: #f2f2f2; /* Light gray background */
 }
 
-th, td {
-    padding: 10px;
+/* Style table headers and cells */
+.th, .td {
+    padding: 12px;
     text-align: center;
+    font-size: 14px;
 }
 
-th {
-    background-color: #333;
+.th {
+    background-color: #333; /* Dark gray */
     color: white;
+    font-weight: bold;
+    border: 1px solid #333;
 }
 
-tr:nth-child(even) {
+/* Style even table rows */
+.tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:hover {
-    background-color: #ddd;
-}
-
-.table th, .table td {
-    border: 1px solid #ddd;
+/* Style table rows on hover */
+.tr:hover {
+    background-color: #c0c0c0; /* Slightly darker gray */
 }
 
 .user-info {
@@ -99,25 +108,9 @@ tr:hover {
     font-weight: bold;
 }
 
-/* Style the table header */
-.table th {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Style the table rows */
-.table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-/* Style table rows on hover */
-.table tr:hover {
-    background-color: #ddd;
-}
-
+/* Additional styles for paragraphs or other elements */
 p {
     font-size: 16px;
     color: rgb(247, 237, 237);
 }
+

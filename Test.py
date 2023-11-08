@@ -1,24 +1,33 @@
 import time
 import random
 from flask import Flask, render_template, url_for, request,send_file, redirect, session
+from functools import wraps
+from flask import request, redirect, url_for, session
 from hashed import encrypt
 from werkzeug.utils import secure_filename
 import os
-from users_database import get_users
+from users_database import get_db
 import hashlib
 from authentication import check_username_password, check_username
+from Insert import employeedata, accountsdata
+
+
 
 app = Flask(__name__, static_folder="static")
 app.config['SECRET_KEY'] = os.urandom(24).hex()
+
+
 
 def get_current_user():
     user = None
     if "user" in session:
         user = session['user']
-        db = get_users()
-        user_cursor = db.execute("select * from Accounts where username = ?", [user])
+        print(user)
+        db = get_db()
+        user_cursor = db.execute("select * from Accounts where Username = ?", [user])
         user = user_cursor. fetchone()
     return user
+
 
 @app.route('/')
 def splash():
@@ -27,7 +36,10 @@ def splash():
 @app.route('/home')
 def home():
     user = get_current_user()
+    print(f'Session User: {session["user"]}')
+    print(f'Current User: {user}')
     return render_template('home.html', user = user)
+
 
 @app.route('/login',methods=['GET', 'POST']) # Added method
 def login():
@@ -54,7 +66,6 @@ def login():
 
     return render_template ('login.html', error = error)
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     error = None
@@ -66,9 +77,16 @@ def register():
         role = request.form['role']
         role = role.upper()
         token = request.form.get('token', None)
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        email = request.form['email']
+        contact = request.form['contact']
 
-        role_cursor = get_users().execute("SELECT RoleID FROM Roles WHERE Role = ?", [role])
+        role_cursor = get_db().execute("SELECT RoleID FROM Roles WHERE Role = ?", [role])
         role_id = role_cursor.fetchone()
+
+        employee_cursor = get_db().execute("SELECT EmployeeID FROM Employees WHERE Username = ?", [username])
+        employee_id = employee_cursor.fetchone()
 
         admin = '0'  # Default to non-admin
 
@@ -84,8 +102,8 @@ def register():
             error = "That username is taken"
             return render_template('register.html', error=error)
         else:
-            get_users().execute("INSERT INTO Accounts (Username, Password, Role, Admin, RoleID) VALUES (?, ?, ?, ?, ?)", [username_upper, hashed_password, role, admin, role_id[0]])
-            get_users().commit()
+            employeedata(firstname, lastname, contact, email, username)
+            accountsdata(username_upper, hashed_password, role, admin, role_id, employee_id)
 
         # Redirect to the login page after registration
         return redirect(url_for('login'))
@@ -96,7 +114,7 @@ def register():
 @app. route ("/promote")
 def promote():
     user = get_current_user()
-    db = get_users()
+    db = get_db()
     
     all_entries_cursor = db.execute('SELECT * FROM Accounts')
     employees = all_entries_cursor.fetchall()
@@ -104,10 +122,12 @@ def promote():
     return render_template('promote.html', user = user, employees = employees)
 
 
+
+
 @app. route("/promotetoadmin/<int:empid>")
 def promotetoadmin(empid):
     user = get_current_user()
-    db = get_users()
+    db = get_db()
     db.execute('UPDATE Accounts SET admin = 1 WHERE AccountsID = ?', [empid])
     db.commit()
     return redirect(url_for('promote'))
@@ -116,7 +136,7 @@ def promotetoadmin(empid):
 @app. route("/revoke/ <int:empid>")
 def revoke(empid):
     user = get_current_user()
-    db = get_users()
+    db = get_db()
     db.execute('UPDATE Accounts SET admin = 0 WHERE AccountsID = ?', [empid])
     db.commit()
     return redirect(url_for('promote'))
@@ -125,7 +145,7 @@ def revoke(empid):
 @app. route ("/deleteuser/ <int:empid>")
 def deleteuser(empid):
     user = get_current_user()
-    db = get_users()
+    db = get_db()
     db.execute('DELETE FROM Accounts WHERE AccountsID = ?', [empid])
     db.commit()
     return redirect(url_for('promote'))
