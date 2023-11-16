@@ -14,7 +14,7 @@ def linux_printer(filename,printer_name=None):
     import subprocess
     try: 
         if printer_name:
-            # pecify a specific printer, use the lpr command with the printer name
+            # Specify a specific printer, use the lpr command with the printer name
             subprocess.run(['lpr', '-P', printer_name, filepath(filename)])
         else: # default Printer 
             subprocess.run(['lpr', filepath(filename)])
@@ -26,7 +26,7 @@ def linux_printer(filename,printer_name=None):
 
 
 def filepath(filename):
-    path = f'{os.path.dirname(os.path.abspath(__file__))}\\uploads\\{filename}'
+    path = f('{os.path.dirname(os.path.abspath(__file__))}\\uploads\\{filename}')
     return path
 
 
@@ -52,3 +52,33 @@ def doc_to_print(filename): ## Call the doc_to_print method which allows the use
 
     return status
 
+
+
+def linux_get_device_status():
+    import subprocess
+    try: 
+        # Specify a specific printer, use the lpr command with the printer name
+        status = subprocess.run(['lpstat', '-p'])
+ 
+        return status
+    except Exception as e:
+        return e    
+
+
+
+def windows_get_printer_status():
+    # Run the WMIC command to get printer status
+    command = 'wmic printer list brief'
+    result = os.popen(command).read()
+    print("Printer Status:")
+    print(result)
+
+def windows_get_device_status():
+    # Run the WMIC command to get device status
+    command = 'wmic logicaldisk get caption,description'
+    result = os.popen(command).read()
+    print("Device Status:")
+    print(result)
+
+
+print(linux_get_device_status())
