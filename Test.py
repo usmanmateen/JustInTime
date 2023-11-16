@@ -9,14 +9,10 @@ import os
 from users_database import get_db
 import hashlib
 from authentication import check_username_password, check_username
-from Insert import employeedata, accountsdata
-
-
+from Insert import employeedata, accountsdata, roleID, employeeID
 
 app = Flask(__name__, static_folder="static")
 app.config['SECRET_KEY'] = os.urandom(24).hex()
-
-
 
 def get_current_user():
     user = None
@@ -36,9 +32,11 @@ def splash():
 @app.route('/home')
 def home():
     user = get_current_user()
-    print(f'Session User: {session["user"]}')
-    print(f'Current User: {user}')
-    return render_template('home.html', user = user)
+    if 'logged_in' in session and session['logged_in']:
+        return render_template('home.html', user = user)
+    else:
+        return redirect(url_for('login'))
+    
 
 
 @app.route('/login',methods=['GET', 'POST']) # Added method
@@ -52,6 +50,7 @@ def login():
 
         if check_username_password(username_upper, password):
             session['user'] = username_upper
+            session['logged_in'] = True
             return redirect(url_for("home"))
         else:
             error = "Incorrect username or password"
@@ -82,12 +81,6 @@ def register():
         email = request.form['email']
         contact = request.form['contact']
 
-        role_cursor = get_db().execute("SELECT RoleID FROM Roles WHERE Role = ?", [role])
-        role_id = role_cursor.fetchone()
-
-        employee_cursor = get_db().execute("SELECT EmployeeID FROM Employees WHERE Username = ?", [username])
-        employee_id = employee_cursor.fetchone()
-
         admin = '0'  # Default to non-admin
 
         if token == '4dm1nr0l3':
@@ -103,7 +96,7 @@ def register():
             return render_template('register.html', error=error)
         else:
             employeedata(firstname, lastname, contact, email, username)
-            accountsdata(username_upper, hashed_password, role, admin, role_id, employee_id)
+            accountsdata(username_upper, hashed_password, role, admin, roleID(role), employeeID(username))
 
         # Redirect to the login page after registration
         return redirect(url_for('login'))
@@ -115,13 +108,12 @@ def register():
 def promote():
     user = get_current_user()
     db = get_db()
-    
-    all_entries_cursor = db.execute('SELECT * FROM Accounts')
-    employees = all_entries_cursor.fetchall()
-    
-    return render_template('promote.html', user = user, employees = employees)
-
-
+    if 'logged_in' in session and session['logged_in'] :
+        all_entries_cursor = db.execute('SELECT * FROM Accounts')
+        employees = all_entries_cursor.fetchall()
+        return render_template('promote.html',  user = user, employees = employees)
+    else:
+        return redirect(url_for('login'))
 
 
 @app. route("/promotetoadmin/<int:empid>")
@@ -153,22 +145,26 @@ def deleteuser(empid):
 
 @app. route ("/logout")
 def logout():
-    session.pop('user' , None)
+    session.pop('logged_in' , None)
     return redirect(url_for ("splash"))
 
 
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
-    filename = None
-    if 'file' in request.files:
-        file = request.files['file']
-        filename = secure_filename(file.filename)
-        # Here you should save the file
-        file.save(os.path.join("uploads/", filename)) ## Saves the file to uploads/ 
+    # Check if a valid login exists and adds security to the upload page
+    if 'logged_in' in session and session['logged_in']:
+        filename = None
+        if 'file' in request.files:
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+                # Here you should save the file
+            file.save(os.path.join("uploads/", filename))
+        
+        return render_template('upload_form.html', filename=filename) 
+    else:
 
-        print('File uploaded successfully')
-
-    return render_template('upload_form.html', filename=filename)
+        return redirect(url_for('login'))
+        
 
 
 def main():
@@ -180,3 +176,5 @@ main()
 print("Bye")
 
     
+
+

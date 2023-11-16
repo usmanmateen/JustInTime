@@ -6,8 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to FloatFry</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+            .container-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+	        width: 5px; 
+	        max-width: 8000%;
+	        margin-top: 0; 
+	        padding: 20px; 
+	        border: 2px solid #ccc; 
+	        opacity: 1;
+	        opacity: 1;
+	        margin-left: auto;
+	        margin-right: auto;
+	        margin-bottom: 20px;
+        }
+
+       
+        .order-container {
+            width: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            border: 2px solid #ccc; 
+            opacity: 1; 
+        }
+        img {
+            max-width: 8000%;
+            height: auto; 
+            display: block; 
+            margin: 0 auto; 
+    }
+    </style>
+    <link href="file:///Macintosh HD/Users/muhammadusman/Downloads/django/JustInTime/static/styles.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body style="max-width: none">
     <header>
         <div class="logo">
             <img src="{{ url_for('static', filename='float_fry_logo.png') }}" alt="Float Fry Logo">
@@ -16,6 +51,29 @@
             {{ links(user) }}
         </nav>
     </header>
-    <h1>Welcome to FloatFry</h1>
+    <h1>Dashboard</h1>
+    <div class="container-row">
+        <div class="container">
+            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+        </div>
+
+        <div class="container">
+            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+        </div>
+    </div>
+
+    <div class="container-row">
+        <div class="container">
+            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+        </div>
+
+        <div class="container">
+            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+        </div>
+    </div>
+
+    <div class="order-container">
+        <img src="white-bg.png" alt="graph demo">
+    </div>
 </body>
 </html>
