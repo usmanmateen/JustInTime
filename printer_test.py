@@ -10,6 +10,22 @@ def check_os():
     return system_types.get(platform.system().lower(),-1)
 
 
+
+
+
+
+def filepath(filename):
+    path = f"{os.path.dirname(os.path.abspath(__file__))}\\uploads\\{filename}"
+    return path
+
+
+def windows_printer(filename):
+    try:
+        os.startfile(filepath(filename),'print')
+        return "Sent to Printer."
+    except Exception as e:
+        return e
+        
 def linux_printer(filename,printer_name=None):
     import subprocess
     try: 
@@ -24,24 +40,11 @@ def linux_printer(filename,printer_name=None):
         return e
 
 
-
-def filepath(filename):
-    path = f('{os.path.dirname(os.path.abspath(__file__))}\\uploads\\{filename}')
-    return path
-
-
-def windows_printer(filename):
-    try:
-        os.startfile(filepath(filename),'print')
-        return "Sent to Printer."
-    except Exception as e:
-        return e
-
-
-
-def doc_to_print(filename): ## Call the doc_to_print method which allows the user to printer. 
+def doc_to_print(filename = None): ## Call the doc_to_print method which allows the user to printer. 
     machine_type = check_os()
     
+    if filename == None or " ":
+        return "No File Given"
 
     if machine_type == 1:
         status = windows_printer(filename)
@@ -51,6 +54,7 @@ def doc_to_print(filename): ## Call the doc_to_print method which allows the use
         status = linux_printer(filepath)
 
     return status
+
 
 
 
@@ -81,4 +85,20 @@ def windows_get_device_status():
     print(result)
 
 
-print(linux_get_device_status())
+def printer_status():
+    machine_type = check_os()
+
+    if machine_type == 1:
+        status = windows_get_printer_status()
+    
+
+    if machine_type == 0:
+        status = linux_get_device_status()
+
+    return status
+    
+
+
+
+
+print( printer_status() )
