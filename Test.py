@@ -59,8 +59,6 @@ def login():
 
         print(f'Username is {username} and Password is {password}')
 
-        #code = hashed.login(username, password)
-        #print(f'State Code is {code}')
         
 
     return render_template ('login.html', error = error)
@@ -108,7 +106,7 @@ def register():
 def promote():
     user = get_current_user()
     db = get_db()
-    if 'logged_in' in session and session['logged_in'] :
+    if 'logged_in' in session and session['logged_in'] and user[ 'admin'] == 1:
         all_entries_cursor = db.execute('SELECT * FROM Accounts')
         employees = all_entries_cursor.fetchall()
         return render_template('promote.html',  user = user, employees = employees)
