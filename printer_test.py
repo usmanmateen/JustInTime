@@ -75,7 +75,7 @@ def windows_get_printer_status():
     command = 'wmic printer list brief'
     result = os.popen(command).read()
     print("Printer Status:")
-    print(result)
+    return (result)
 
 def windows_get_device_status():
     # Run the WMIC command to get device status
@@ -83,6 +83,8 @@ def windows_get_device_status():
     result = os.popen(command).read()
     print("Device Status:")
     print(result)
+
+    return result
 
 
 def printer_status():
@@ -95,10 +97,12 @@ def printer_status():
     if machine_type == 0:
         status = linux_get_device_status()
 
+    status = status.split("\n")
+    for each in status:
+        if each == "":
+            status.remove(each)
+
     return status
-    
 
 
 
-
-print( printer_status() )

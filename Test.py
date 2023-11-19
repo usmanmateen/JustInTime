@@ -166,6 +166,21 @@ def upload_file():
         return redirect(url_for('login'))
         
 
+@app.route('/viewPrinter', methods=['GET','POST'])
+def viewPrinter():
+    user = get_current_user()
+    if 'logged_in' in session and session['logged_in']:
+        from printer_test import printer_status
+        data = printer_status()
+        
+        return render_template('viewPrinter.html', user = user, dataToRender =data )
+    else:
+        from printer_test import printer_status
+        data = printer_status()
+        
+        return render_template('viewPrinter.html', user = user, dataToRender =data, len = len(data) )
+        #return redirect(url_for('login'))
+
 
 def main():
     app.run(debug=True)
