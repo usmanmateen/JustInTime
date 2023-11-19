@@ -5,7 +5,6 @@ import os
 
 
 def employeedata(firstname, lastname, contact, email, username ):
-   
     get_db().execute('INSERT INTO Employees (FirstName, LastName, ContactNumber, Email, Username) VALUES (?,?,?,?,?) ', [firstname, lastname, contact, email, username])     
     get_db().commit()
 
