@@ -92,15 +92,16 @@ def printer_status():
 
     if machine_type == 1:
         status = windows_get_printer_status()
+        status = status.split("\n")
+        for each in status:
+            if each == "":
+                status.remove(each)
     
 
     if machine_type == 0:
         status = linux_get_device_status()
 
-    status = status.split("\n")
-    for each in status:
-        if each == "":
-            status.remove(each)
+
 
     return status
 
