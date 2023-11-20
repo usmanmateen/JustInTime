@@ -62,7 +62,9 @@ def linux_get_device_status():
     import subprocess
     try: 
         # Specify a specific printer, use the lpr command with the printer name
-        status = subprocess.run(['lpstat', '-p'])
+        status = subprocess.run(['lpstat', '-p'], capture_output=True)
+        print(status)
+
  
         return status
     except Exception as e:
@@ -96,15 +98,18 @@ def printer_status():
     if machine_type <= 0:
         status = linux_get_device_status()
 
+    status= str(status)
+
     status = status.split("\n")
+    
+
     for each in status:
-    if each == "":
-        status.remove(each)
+        if each == "":
+            status.remove(each)
     
 
     return status
 
-print(check_os())
-print(platform.system())
-print(printer_status())
 
+x = printer_status()[0]
+print(x)
