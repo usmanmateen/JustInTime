@@ -102,14 +102,21 @@ def printer_status():
 
     status = status.split("\n")
     
+        
 
     for each in status:
         if each == "":
             status.remove(each)
     
+    try:
+        status = status.split("\n")
+    except Exception as e:
+        print(e)
 
+    
     return status
 
 
-x = printer_status()[0]
-print(x)
+
+
+
