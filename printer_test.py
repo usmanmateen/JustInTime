@@ -50,7 +50,7 @@ def doc_to_print(filename = None): ## Call the doc_to_print method which allows 
         status = windows_printer(filename)
     
 
-    if machine_type == 0:
+    if machine_type <= 0:
         status = linux_printer(filepath)
 
     return status
@@ -98,12 +98,14 @@ def printer_status():
                 status.remove(each)
     
 
-    if machine_type == 0:
+    if machine_type <= 0:
         status = linux_get_device_status()
 
 
 
     return status
 
-
+print(check_os())
+print(platform.system())
+print(printer_status())
 
