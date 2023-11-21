@@ -1,0 +1,57 @@
+{%from 'links.html' import links %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to FloatFry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='float_fry_logo.png') }}" alt="Float Fry Logo">
+        </div>
+        <nav>
+            {{links(user)}}
+        </nav>
+    </header>
+    <h1>Sales</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">SalesID</th>
+            <th scope="col">OrderID</th>
+            <th scope="col">ProductID</th>
+            <th scope="col">CustomerID</th>
+            <th scope="col">SalesDate</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if sales %}
+                {% for sal in sales %}
+                    <tr>
+                        <th scope="row">{{ sal["SalesID"] }}</th>
+                        <td>{{ sal["OrderID"] }}</td>
+                        <td>{{ sal["ProductID"] }}</td>
+                        <td>{{ sal["CustomerID"] }}</td>
+                        <td>{{ sal["SalesDate"] }}</td>
+                        <td>{{ sal["SalesQuantity"] }}</td>
+                        <td>{{ sal["SalesPrice"] }}</td>
+                        
+                    </tr>
+                {% endfor %}    
+            {% endif %}
+        </tbody>
+      </table>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -32,8 +32,12 @@ def splash():
 @app.route('/home')
 def home():
     user = get_current_user()
+    db = get_db()
     if 'logged_in' in session and session['logged_in']:
-        return render_template('home.html', user = user)
+        all_entries_cursor = db.execute('SELECT * FROM Orders')
+        orders = all_entries_cursor.fetchall()
+        image = '/Users/muhammadusman/Downloads/django/JustInTime/graphs/sales_graph.png'
+        return render_template('home.html', user = user, orders= orders, image = image)
     else:
         return redirect(url_for('login'))
     
@@ -101,6 +105,121 @@ def register():
 
     return render_template('register.html')
 
+@app.route('/Products')
+def products():
+    user = get_current_user()
+    db = get_db()
+    if 'logged_in' in session and session['logged_in']:
+        all_entries_cursor = db.execute('SELECT * FROM Products')
+        products = all_entries_cursor.fetchall()
+        
+        return render_template('products.html',  user = user, products = products)
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/Suppliers')
+def suppliers():
+    user = get_current_user()
+    db = get_db()
+    if 'logged_in' in session and session['logged_in']:
+        all_entries_cursor = db.execute('SELECT * FROM Suppliers')
+        suppliers = all_entries_cursor.fetchall()
+        
+        return render_template('suppliers.html',  user = user, suppliers = suppliers)
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/Materials')
+def materials():
+    user = get_current_user()
+    db = get_db()
+    if 'logged_in' in session and session['logged_in']:
+        all_entries_cursor = db.execute('SELECT * FROM Materials')
+        materials = all_entries_cursor.fetchall()
+        
+        return render_template('materials.html',  user = user, materials = materials )
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/Sales')
+def sales():
+    user = get_current_user()
+    db = get_db()
+    if 'logged_in' in session and session['logged_in']:
+        all_entries_cursor = db.execute('SELECT * FROM Sales')
+        sales = all_entries_cursor.fetchall()
+        
+        return render_template('sales.html',  user = user, sales = sales)
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/Shipments')
+def shipments():
+    user = get_current_user()
+    db = get_db()
+    if 'logged_in' in session and session['logged_in']:
+        all_entries_cursor = db.execute('SELECT * FROM Shipments')
+        shipments = all_entries_cursor.fetchall()
+        
+        return render_template('shipments.html',  user = user, shipments = shipments)
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/Orders')
+def orders():
+    user = get_current_user()
+    db = get_db()
+    if 'logged_in' in session and session['logged_in']:
+        all_entries_cursor = db.execute('SELECT * FROM Orders')
+        orders = all_entries_cursor.fetchall()
+        
+        return render_template('orders.html',  user = user, orders = orders)
+    else:
+        return redirect(url_for('login'))
+
+
+@app. route("/udatestatus/<int:ordid>")
+def update(ordid):
+    user = get_current_user()
+    db = get_db()
+    order = db.execute('SELECT * FROM Orders WHERE OrderID = ?', [ordid]).fetchone()
+
+    if order:
+        current_status = order['OrderStatus']
+
+
+        # Check for status transitions based on the current status
+        if current_status == 'Shipped':
+            db.execute('UPDATE Orders SET OrderStatus = ? WHERE OrderID = ?', ['Delivered', ordid])
+            db.commit()
+            return redirect(url_for('orders'))
+        elif current_status == 'Processing':
+            db.execute('UPDATE Orders SET OrderStatus = ? WHERE OrderID = ?', ['Shipped', ordid])
+            db.commit()
+            return redirect(url_for('orders'))
+        else:
+            
+            return redirect(url_for('orders'))
+
+
+    db.commit()
+    return redirect(url_for('promote'))
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    user = get_current_user()
+    if 'logged_in' in session and session['logged_in']:
+        if request.method == 'POST':
+            name = request.form['name']
+            email = request.form['email']
+            message = request.form['message']
+
+            print(f"Received message from: {name}, Email: {email}, Message: {message}")
+        
+        return render_template('contact.html', user = user)
+    else:
+        return redirect(url_for('login'))
 
 @app. route ("/promote")
 def promote():
@@ -109,6 +228,7 @@ def promote():
     if 'logged_in' in session and session['logged_in'] and user[ 'admin'] == 1:
         all_entries_cursor = db.execute('SELECT * FROM Accounts')
         employees = all_entries_cursor.fetchall()
+        print(all_entries_cursor)
         return render_template('promote.html',  user = user, employees = employees)
     else:
         return redirect(url_for('login'))
@@ -149,6 +269,7 @@ def logout():
 
 @app.route('/upload', methods=['GET','POST'])
 def upload_file():
+    user = get_current_user()
     # Check if a valid login exists and adds security to the upload page
     if 'logged_in' in session and session['logged_in']:
         filename = None
@@ -158,7 +279,7 @@ def upload_file():
                 # Here you should save the file
             file.save(os.path.join("uploads/", filename))
         
-        return render_template('upload_form.html', filename=filename) 
+        return render_template('upload_form.html', filename=filename, user = user) 
     else:
 
         return redirect(url_for('login'))
@@ -168,16 +289,18 @@ def upload_file():
 def viewPrinter():
     user = get_current_user()
     if 'logged_in' in session and session['logged_in']:
-        from printer_test import printer_status
-        data = printer_status()
+        from printer_test import cleanMac
+        data = cleanMac()
         
-        return render_template('viewPrinter.html', user = user, dataToRender =data )
+        return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )
     else:
-        from printer_test import printer_status
-        data = printer_status()
+        from printer_test import cleanMac
+        data = cleanMac()
         
-        return render_template('viewPrinter.html', user = user, dataToRender =data, len = len(data) )
+        return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )
         #return redirect(url_for('login'))
+
+
 
 
 def main():

@@ -6,13 +6,20 @@
         <li><a href="{{ url_for('register') }}">Register</a></li>
         {%endif%}
         {% if user %}
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('orders') }}">Orders</a></li>
+        <li><a href="{{ url_for('sales') }}">Sales</a></li>
+        <li><a href="{{ url_for('shipments') }}">Shipments</a></li>
+        <li><a href="{{ url_for('materials') }}">Materials</a></li>
+        <li><a href="{{ url_for('suppliers') }}">Suppliers</a></li>
+        <li><a href="{{ url_for('products') }}">Products</a></li>
         <li><a href="{{ url_for('upload_file') }}">Upload</a></li>
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
         {% endif %}
         {% if user and user[ 'admin'] == 1 %}
         <li><a href="{{ url_for('promote') }}">Manage Users</a></li>
         {% endif %}
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
         <li>
             {% if user %}
                 <div class="user-info">

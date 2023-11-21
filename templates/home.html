@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to FloatFry</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
             .container-row {
             display: flex;
@@ -32,7 +34,10 @@
             padding: 20px; 
             border: 2px solid #ccc; 
             opacity: 1; 
+            height: auto; 
+            overflow: auto;
         }
+
         img {
             max-width: 8000%;
             height: auto; 
@@ -54,26 +59,58 @@
     <h1>Dashboard</h1>
     <div class="container-row">
         <div class="container">
-            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+            <img src="{{ image }}" alt="Sales" style="width: 100%;">
         </div>
 
         <div class="container">
-            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+            <img src="{{ image }}" alt="Sales" style="width: 100%;">
         </div>
     </div>
 
     <div class="container-row">
         <div class="container">
-            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+            <img src="{{ image }}" alt="Sales" style="width: 100%;">
         </div>
 
         <div class="container">
-            <img src="{{ url_for('static', filename='white-bg.png') }}"alt="graph demo" style="width: 100%;">
+
         </div>
     </div>
 
     <div class="order-container">
-        <img src="white-bg.png" alt="graph demo">
+    
+
+        <h1>Orders</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">OrderID</th>
+                    <th scope="col">CustomerID</th>
+                    <th scope="col">OrderDate</th>
+                    <th scope="col">OrderPrice</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if orders %}
+                    {% for ord in orders %}
+                        <tr>
+                            <th scope="row">{{ ord["OrderID"] }}</th>
+                            <td>{{ ord["CustomerID"] }}</td>
+                            <td>{{ ord["OrderedDate"] }}</td>
+                            <td>£{{ ord["OrderPrice"] }}</td>
+                            <td>{{ ord["OrderStatus"] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </div>
+
+    
+
 </body>
 </html>
