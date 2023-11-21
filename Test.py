@@ -100,7 +100,7 @@ def register():
         username_upper = username.upper()
         password = request.form['password']
         role = request.form['role']
-        role = role.upper()
+        role = role.upper().replace(" ", "")
         token = request.form.get('token', None)
         firstname = request.form['firstname']
         lastname = request.form['lastname']

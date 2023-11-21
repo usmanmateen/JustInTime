@@ -9,10 +9,10 @@ def employeedata(firstname, lastname, contact, email, username ):
     get_db().commit()
 
 def roleID(role):
-    cursor = get_db().execute("SELECT RoleID FROM Roles WHERE Role = ?", [role])
-    result = cursor.fetchone()
-    if result:
-        return result['RoleID']
+    cursor = get_db().execute("SELECT RoleID FROM Roles WHERE Role = ? ", [role])
+    roleid = cursor.fetchone()
+    if roleid:
+        return roleid['RoleID']
     return None
 
 def employeeID(username):
@@ -26,7 +26,7 @@ def accountsdata(username_upper, hashed_password, role, admin, role_id, employee
     username= username_upper.lower()
     print(username_upper, hashed_password, role, admin, role_id, employee_id)
     get_db().execute("INSERT INTO Accounts (Username, Password, Role, Admin, RoleID, EmployeeID) VALUES (?, ?, ?, ?, ?, ?)", [username_upper, hashed_password, role, admin, roleID(role), employeeID(username)])
+
     
     get_db().commit()
     
-
