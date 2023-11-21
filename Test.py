@@ -38,15 +38,34 @@ def home():
         orders = all_entries_cursor.fetchall()
         image = os.path.join('graphs/','sales_graph.png')
         print(image)
-        image = url_for('get_image')
-        return render_template('home.html', user = user, orders= orders, image = image)
+        sales_image = url_for('get_sales_image')
+        orders_image = url_for('get_orders_image')
+        materials_image = url_for('get_materials_image')
+        products_image = url_for('get_products_image')
+        return render_template('home.html', user = user, orders= orders, sales_image = sales_image, orders_image = orders_image,materials_image = materials_image, products_image = products_image)
     else:
         return redirect(url_for('login'))
     
-@app.route('/image')
-def get_image():
+@app.route('/salesimage')
+def get_sales_image():
     path = os.path.join('graphs/','sales_graph.png')  
     return send_file(path, mimetype='image/png')
+
+@app.route('/ordersimage')
+def get_orders_image():
+    path = os.path.join('graphs/','order_graph.png')  
+    return send_file(path, mimetype='image/png')
+
+@app.route('/materialsimage')
+def get_materials_image():
+    path = os.path.join('graphs/','materials_pie_day.png')  
+    return send_file(path, mimetype='image/png')
+
+@app.route('/productsimage')
+def get_products_image():
+    path = os.path.join('graphs/','products_chart.png')  
+    return send_file(path, mimetype='image/png')    
+
 
 @app.route('/login',methods=['GET', 'POST']) # Added method
 def login():
@@ -294,7 +313,7 @@ def upload_file():
 def viewPrinter():
     user = get_current_user()
     if 'logged_in' in session and session['logged_in']:
-        from printer_test import cleanMac
+        from printer_test import cleanMac, printer_status
         data = cleanMac()
         
         return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )

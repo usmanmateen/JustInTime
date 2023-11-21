@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 def fetch_sales_data():
-    conn = sqlite3.connect("/Users/muhammadusman/Downloads/django/JustInTime/Floatfry.db")
+    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
     cursor = conn.cursor()
     cursor.execute("SELECT SalesDate, SalesPrice FROM Sales")
     rows = cursor.fetchall()
@@ -37,5 +37,117 @@ def save_sales_graph():
     plt.savefig(output_path)
     plt.close()
 
+def fetch_order_data():
+    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
+    cursor = conn.cursor()
+    cursor.execute("SELECT OrderedDate, SUM(OrderPrice) FROM Orders GROUP BY OrderedDate")
+    rows = cursor.fetchall()
+
+    order_date = []
+    total_order_amount = []
+
+    for row in rows:
+        order_date.append(row[0])  
+        total_order_amount.append(row[1]) 
+
+    conn.close()
+    return order_date, total_order_amount
+
+def save_order_graph():
+    order_date, total_order_amount = fetch_order_data()
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(order_date, total_order_amount, color='black')  
+    plt.title('Total Order Amount per Day')
+    plt.xlabel('Date')
+    plt.ylabel('Total Order Amount')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    output_folder = 'graphs'
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    output_path = os.path.join(output_folder, 'order_graph.png')
+    plt.savefig(output_path)
+    plt.close()
+
+def fetch_material_data():
+    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
+    cursor = conn.cursor()
+    cursor.execute("SELECT MaterialName, Quantity FROM Materials")
+    rows = cursor.fetchall()
+
+    material_names = []
+    quantities = []
+
+    for row in rows:
+        material_names.append(row[0]) 
+        quantities.append(row[1]) 
+
+    conn.close()
+    return material_names, quantities
+
+def save_pie_chart():
+    material_names, quantities = fetch_material_data()
+
+    plt.figure(figsize=(8, 8))
+    plt.pie(quantities, labels=material_names, autopct='%1.1f%%', startangle=140)
+    plt.axis('equal')  
+    plt.title('Material Quantity Distribution')
+
+    plt.tight_layout()
+    
+
+    output_folder = 'graphs'
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    output_path = os.path.join(output_folder, 'materials_pie_day.png')
+    plt.savefig(output_path)
+    plt.close()
+
+
+def fetch_order_data():
+    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
+    cursor = conn.cursor()
+    cursor.execute("SELECT p.ProductName, CAST(RANDOM() * 2 AS INTEGER) AS OrderCount FROM Products p;")
+    rows = cursor.fetchall()
+
+    product_names = []
+    order_counts = []
+
+    for row in rows:
+        product_names.append(row[0])  
+        order_counts.append(row[1])  
+
+    conn.close()
+    return product_names, order_counts
+
+def save_products_chart():
+    product_names, order_counts = fetch_order_data()
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(product_names, order_counts, color='skyblue')
+    plt.title('Number of Orders per Product')
+    plt.xlabel('Product Name')
+    plt.ylabel('Number of Orders')
+    plt.xticks(rotation=45, ha='right')
+    plt.ylim(0, max(order_counts) + 5)
+
+    plt.tight_layout()
+
+    output_folder = 'graphs'
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    output_path = os.path.join(output_folder, 'products_chart.png')
+    plt.savefig(output_path)
+    plt.close()
+
 if __name__ == '__main__':
     save_sales_graph()
+    save_order_graph()
+    save_pie_chart()
+    save_products_chart()
+
