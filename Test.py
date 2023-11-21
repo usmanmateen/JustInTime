@@ -36,12 +36,17 @@ def home():
     if 'logged_in' in session and session['logged_in']:
         all_entries_cursor = db.execute('SELECT * FROM Orders')
         orders = all_entries_cursor.fetchall()
-        image = '/Users/muhammadusman/Downloads/django/JustInTime/graphs/sales_graph.png'
+        image = os.path.join('graphs/','sales_graph.png')
+        print(image)
+        image = url_for('get_image')
         return render_template('home.html', user = user, orders= orders, image = image)
     else:
         return redirect(url_for('login'))
     
-
+@app.route('/image')
+def get_image():
+    path = os.path.join('graphs/','sales_graph.png')  
+    return send_file(path, mimetype='image/png')
 
 @app.route('/login',methods=['GET', 'POST']) # Added method
 def login():
