@@ -19,6 +19,8 @@
         {% endif %}
         {% if user and user[ 'admin'] == 1 %}
         <li><a href="{{ url_for('promote') }}">Manage Users</a></li>
+        <li><a href="{{ url_for('viewPrinter') }}">Printer Status</a></li>
+
         {% endif %}
         
         
