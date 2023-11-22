@@ -312,12 +312,12 @@ def viewPrinter():
     user = get_current_user()
     if 'logged_in' in session and session['logged_in']:
         from printer_test import cleanMac, printer_status
-        data = cleanMac()
+        data = printer_status()
         
         return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )
     else:
         from printer_test import cleanMac
-        data = cleanMac()
+        data = printer_status()
         
         return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )
         #return redirect(url_for('login'))
