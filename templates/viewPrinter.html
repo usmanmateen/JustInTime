@@ -24,15 +24,22 @@
     <h1>Printer Status</h1>
 
     <title>Printer Status</title>
-    <ol> 
-    <!-- For loop logic of jinja template -->
-    {%for i in range(0, len)%} 
-      
-        <li>{{dataToRender[i]}}</li> 
-        
-    {%endfor%} 
-      
-    </ol> 
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+                {%for i in range(0, len)%} 
+                    <tr>
+                        <th scope="row">{{dataToRender[i]}}}</th>
+                    </tr>
+                {% endfor %}    
+        </tbody>
+      </table>
+ 
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
