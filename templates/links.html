@@ -16,10 +16,12 @@
         <li><a href="{{ url_for('upload_file') }}">Upload</a></li>
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
         <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('viewPrinter') }}">Printer Status</a></li>
         {% endif %}
         {% if user and user[ 'admin'] == 1 %}
         <li><a href="{{ url_for('promote') }}">Manage Users</a></li>
-        <li><a href="{{ url_for('viewPrinter') }}">Printer Status</a></li>
+
+        
 
         {% endif %}
         
@@ -32,6 +34,8 @@
         <li><a href="{{ url_for('upload_file') }}">Upload</a></li>
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
         <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('viewPrinter') }}">Printer Status</a></li>
+
         {% endif %}
 
         {% if user and user['RoleID'] == 1  %}
@@ -41,6 +45,8 @@
         <li><a href="{{ url_for('upload_file') }}">Upload</a></li>
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
         <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('viewPrinter') }}">Printer Status</a></li>
+
         {% endif %}
 
         {% if user and user['RoleID'] == 2  %}
@@ -54,6 +60,8 @@
         <li><a href="{{ url_for('upload_file') }}">Upload</a></li>
         <li><a href="{{ url_for('logout') }}">Logout</a></li>
         <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('viewPrinter') }}">Printer Status</a></li>
+
         {% endif %}
        
         <li>
