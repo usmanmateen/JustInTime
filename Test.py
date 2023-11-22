@@ -316,7 +316,7 @@ def viewPrinter():
         
         return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )
     else:
-        from printer_test import cleanMac
+        from printer_test import cleanMac, printer_status
         data = printer_status()
         
         return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )
