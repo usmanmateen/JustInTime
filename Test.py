@@ -133,7 +133,7 @@ def register():
 def products():
     user = get_current_user()
     db = get_db()
-    if 'logged_in' in session and session['logged_in']:
+    if 'logged_in' in session and session['logged_in'] and user['RoleID'] in [2,4,5]:
         all_entries_cursor = db.execute('SELECT * FROM Products')
         products = all_entries_cursor.fetchall()
         
@@ -145,7 +145,7 @@ def products():
 def suppliers():
     user = get_current_user()
     db = get_db()
-    if 'logged_in' in session and session['logged_in']:
+    if 'logged_in' in session and session['logged_in'] and user['RoleID'] in [2,4,5]:
         all_entries_cursor = db.execute('SELECT * FROM Suppliers')
         suppliers = all_entries_cursor.fetchall()
         
@@ -157,7 +157,7 @@ def suppliers():
 def materials():
     user = get_current_user()
     db = get_db()
-    if 'logged_in' in session and session['logged_in']:
+    if 'logged_in' in session and session['logged_in'] and user['RoleID'] in [2,4,5]:
         all_entries_cursor = db.execute('SELECT * FROM Materials')
         materials = all_entries_cursor.fetchall()
         
@@ -170,7 +170,7 @@ def materials():
 def sales():
     user = get_current_user()
     db = get_db()
-    if 'logged_in' in session and session['logged_in']:
+    if 'logged_in' in session and session['logged_in'] and user['RoleID'] in [2,3,4,5]:
         all_entries_cursor = db.execute('SELECT * FROM Sales')
         sales = all_entries_cursor.fetchall()
         
@@ -182,7 +182,7 @@ def sales():
 def shipments():
     user = get_current_user()
     db = get_db()
-    if 'logged_in' in session and session['logged_in']:
+    if 'logged_in' in session and session['logged_in'] and user['RoleID'] in [1,2,3,4,5]:
         all_entries_cursor = db.execute('SELECT * FROM Shipments')
         shipments = all_entries_cursor.fetchall()
         
@@ -194,7 +194,7 @@ def shipments():
 def orders():
     user = get_current_user()
     db = get_db()
-    if 'logged_in' in session and session['logged_in']:
+    if 'logged_in' in session and session['logged_in'] and user['RoleID'] in [1,2,3,4,5]:
         all_entries_cursor = db.execute('SELECT * FROM Orders')
         orders = all_entries_cursor.fetchall()
         
@@ -227,8 +227,6 @@ def update(ordid):
             return redirect(url_for('orders'))
 
 
-    db.commit()
-    return redirect(url_for('promote'))
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
@@ -331,9 +329,9 @@ def main():
     app.run(debug=True)
     print("Code Stopped")
 
-
-main()
-print("Bye")
+if __name__ == '__main__':
+    main()
+    print("Bye")
 
     
 

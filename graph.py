@@ -1,10 +1,14 @@
 import matplotlib.pyplot as plt
 import os
 import sqlite3
+from users_database import get_db
+#https://matplotlib.org/stable/tutorials/index
+#https://www.geeksforgeeks.org/graph-plotting-in-python-set-1/
+#https://stackoverflow.com/questions/9622163/save-plot-to-image-file-instead-of-displaying-it
 
 def fetch_sales_data():
-    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
-    cursor = conn.cursor()
+
+    cursor = get_db().cursor()
     cursor.execute("SELECT SalesDate, SalesPrice FROM Sales")
     rows = cursor.fetchall()
 
@@ -12,10 +16,10 @@ def fetch_sales_data():
     sales_price = []
 
     for row in rows:
-        sales_date.append(row[0])  # Assuming SalesDate is the fifth column after SalesID
-        sales_price.append(row[1])  # Assuming SalesPrice is the sixth column in your table
+        sales_date.append(row[0])  
+        sales_price.append(row[1])  
 
-    conn.close()
+    get_db().close()
     return sales_date, sales_price
 
 def save_sales_graph():
@@ -33,13 +37,12 @@ def save_sales_graph():
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    output_path = os.path.join(output_folder, 'sales_graph.png')
-    plt.savefig(output_path)
+    folder = os.path.join(output_folder, 'sales_graph.png')
+    plt.savefig(folder)
     plt.close()
 
 def fetch_order_data():
-    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
-    cursor = conn.cursor()
+    cursor = get_db().cursor()
     cursor.execute("SELECT OrderedDate, SUM(OrderPrice) FROM Orders GROUP BY OrderedDate")
     rows = cursor.fetchall()
 
@@ -50,7 +53,7 @@ def fetch_order_data():
         order_date.append(row[0])  
         total_order_amount.append(row[1]) 
 
-    conn.close()
+    get_db().close()
     return order_date, total_order_amount
 
 def save_order_graph():
@@ -68,13 +71,12 @@ def save_order_graph():
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    output_path = os.path.join(output_folder, 'order_graph.png')
-    plt.savefig(output_path)
+    folder = os.path.join(output_folder, 'order_graph.png')
+    plt.savefig(folder)
     plt.close()
 
 def fetch_material_data():
-    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
-    cursor = conn.cursor()
+    cursor = get_db().cursor()
     cursor.execute("SELECT MaterialName, Quantity FROM Materials")
     rows = cursor.fetchall()
 
@@ -85,7 +87,7 @@ def fetch_material_data():
         material_names.append(row[0]) 
         quantities.append(row[1]) 
 
-    conn.close()
+    get_db().close()
     return material_names, quantities
 
 def save_pie_chart():
@@ -103,14 +105,13 @@ def save_pie_chart():
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    output_path = os.path.join(output_folder, 'materials_pie_day.png')
-    plt.savefig(output_path)
+    folder = os.path.join(output_folder, 'materials_pie_day.png')
+    plt.savefig(folder)
     plt.close()
 
 
 def fetch_order_data():
-    conn = sqlite3.connect(os.path.join('database/', "FloatFry.db"))
-    cursor = conn.cursor()
+    cursor = get_db().cursor()
     cursor.execute("SELECT p.ProductName, CAST(RANDOM() * 2 AS INTEGER) AS OrderCount FROM Products p;")
     rows = cursor.fetchall()
 
@@ -121,7 +122,7 @@ def fetch_order_data():
         product_names.append(row[0])  
         order_counts.append(row[1])  
 
-    conn.close()
+    get_db().close()
     return product_names, order_counts
 
 def save_products_chart():
@@ -141,8 +142,8 @@ def save_products_chart():
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    output_path = os.path.join(output_folder, 'products_chart.png')
-    plt.savefig(output_path)
+    folder = os.path.join(output_folder, 'products_chart.png')
+    plt.savefig(folder)
     plt.close()
 
 if __name__ == '__main__':
