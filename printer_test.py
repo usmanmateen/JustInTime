@@ -10,10 +10,6 @@ def check_os():
     return system_types.get(platform.system().lower(),-1)
 
 
-
-
-
-
 def filepath(filename):
     path = f"{os.path.dirname(os.path.abspath(__file__))}\\uploads\\{filename}"
     return path
@@ -89,33 +85,6 @@ def windows_get_device_status():
     return result
 
 
-def printer_status():
-    machine_type = check_os()
-
-    if machine_type == 1:
-        status = windows_get_printer_status()
-
-    if machine_type <= 0:
-        status = linux_get_device_status()
-
-    status= str(status)
-
-    status = status.split("\n")
-    
-        
-
-    for each in status:
-        if each == "":
-            status.remove(each)
-    
-    try:
-        status = status.split("\n")
-    except Exception as e:
-        print(e)
-
-    
-    return status
-
 
 def cleanMac():
     output_list = [
@@ -140,4 +109,38 @@ def cleanMac():
 
 
 
-print(cleanMac())
+
+
+def printer_status():
+    machine_type = check_os()
+
+    if machine_type == 1:
+        status = windows_get_printer_status()
+
+    if machine_type == 0:
+        status = linux_get_device_status()
+
+    if machine_type <0:
+        return cleanMac()
+
+    status= str(status)
+
+    status = status.split("\n")
+    
+        
+
+    for each in status:
+        if each == "":
+            status.remove(each)
+    
+    try:
+        status = status.split("\n")
+    except Exception as e:
+        print(e)
+    
+
+    
+    return status
+
+
+print(printer_status())
