@@ -1,3 +1,4 @@
+
 import platform
 import os
 
@@ -39,7 +40,7 @@ def linux_printer(filename,printer_name=None):
 def doc_to_print(filename = None): ## Call the doc_to_print method which allows the user to printer. 
     machine_type = check_os()
     
-    if filename == None or " ":
+    if filename == None or filename == " ":
         return "No File Given"
 
     if machine_type == 1:
@@ -142,5 +143,3 @@ def printer_status():
     
     return status
 
-
-print(printer_status())

@@ -10,9 +10,12 @@ from users_database import get_db
 import hashlib
 from authentication import check_username_password, check_username
 from Insert import employeedata, accountsdata, roleID, employeeID
+import subprocess
+import platform
 
 app = Flask(__name__, static_folder="static")
 app.config['SECRET_KEY'] = os.urandom(24).hex()
+
 
 def get_current_user():
     user = None
@@ -321,6 +324,33 @@ def viewPrinter():
         
         return render_template('viewPrinter.html', user = user, dataToRender = data, len = len(data) )
         #return redirect(url_for('login'))
+
+@app.route ('/uploadList', methods=['GET','POST'])
+def uploadlist():
+    user = get_current_user()
+    if 'logged_in' in session and session['logged_in'] and user['RoleID'] in [1,2,3,4,5]:
+        uploads_folder = 'uploads' 
+        files = {}
+        for filename in os.listdir(uploads_folder):
+            file_path = os.path.join(uploads_folder, filename)
+            if os.path.isfile(file_path):
+                files[filename] = os.path.getsize(file_path)
+                print(files[filename])
+                    
+        return render_template('UploadList.html', filenames=files, length = len(files), user = user)
+    else:
+        return redirect(url_for('login'))
+    
+    
+
+@app.route('/Print/<string:filename>')
+def print(filename):
+    from printer_test import doc_to_print
+    doc_to_print(filename)
+    
+    return redirect(url_for('uploadlist'))
+        
+
 
 
 
