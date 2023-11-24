@@ -155,4 +155,4 @@ def printer_status():
     
     return status
 
-print(doc_to_print("test.txt"))
+

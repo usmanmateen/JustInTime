@@ -1,0 +1,11 @@
++------------+-------------------------------+--------------------------------+-------------------------------+----------------------------------------------+
+| Day/Time   | Stamper                       | Floor Manager                  | Product Operative             | Product Engineer                             |
++------------+-------------------------------+--------------------------------+-------------------------------+----------------------------------------------+
+| Monday     | 8 am - 4 pm (Stamping duties) | 7 am - 5 pm (Floor oversight)  | 8 am - 4 pm (Production tasks)| 9 am - 5 pm (Design, development, and research)|
+| Tuesday    | 8 am - 4 pm (Stamping duties) | 7 am - 5 pm (Floor oversight)  | 8 am - 4 pm (Production tasks)| 9 am - 5 pm (Design, development, and research)|
+| Wednesday  | 8 am - 4 pm (Stamping duties) | 7 am - 5 pm (Floor oversight)  | 8 am - 4 pm (Production tasks)| 9 am - 5 pm (Design, development, and research)|
+| Thursday   | 8 am - 4 pm (Stamping duties) | 7 am - 5 pm (Floor oversight)  | 8 am - 4 pm (Production tasks)| 9 am - 5 pm (Design, development, and research)|
+| Friday     | 8 am - 4 pm (Stamping duties) | 7 am - 4 pm (Floor oversight, meetings)| 8 am - 4 pm (Production tasks)| 9 am - 5 pm (Design, development, and research)|
+| Saturday   | Off                           | Off                            | 8 am - 4 pm (Optional overtime)| Off                                          |
+| Sunday     | Off                           | Off                            | 8 am - 4 pm (Optional overtime)| Off                                          |
++------------+-------------------------------+--------------------------------+-------------------------------+----------------------------------------------+
