@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Button to trigger popup -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#otpModal">
+    Verify OTP
+</button>
+
+<div class="modal" id="otpModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Enter OTP</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                {% if error %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endif %}
+                <form method="post" action="/verify_otp">
+                    <label for="otp_code">Enter OTP:</label><br>
+                    <input type="text" id="otp_code" name="otp_code" required><br><br>
+                    <input type="submit" value="Verify OTP">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

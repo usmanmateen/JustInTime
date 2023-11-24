@@ -96,6 +96,7 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    from OTP import send_OTP
     error = None
     if request.method == 'POST':
         # Retrieve info from the registration form
@@ -112,6 +113,7 @@ def register():
 
         admin = '0'  # Default to non-admin
 
+
         if token == '4dm1nr0l3':
             admin = '1'
 
@@ -124,13 +126,50 @@ def register():
             error = "That username is taken"
             return render_template('register.html', error=error)
         else:
-            employeedata(firstname, lastname, contact, email, username)
-            accountsdata(username_upper, hashed_password, role, admin, roleID(role), employeeID(username))
+            # Store user info in a session
+            session['userinfo'] = {
+                'firstname': firstname,
+                'lastname': lastname,
+                'contact': contact,
+                'email': email,
+                'username': username_upper,
+                'password': hashed_password,
+                'role': role,
+                'admin': admin,
+            }
+            send_OTP(contact)
+            return redirect(url_for('verify_otp'))
 
-        # Redirect to the login page after registration
-        return redirect(url_for('login'))
+
 
     return render_template('register.html')
+
+@app.route('/verify_otp', methods=['GET', 'POST'])
+def verify_otp():
+    from OTP import checks_OTP
+    error = None
+    if request.method == 'POST':
+        otp_code = request.form.get('otp_code')
+        userinfo = session.get('userinfo')
+
+        contact = userinfo.get('contact', None)
+        verification_status = checks_OTP(contact, otp_code)
+        
+        if verification_status == 'approved':
+                
+                employeedata(userinfo['firstname'], userinfo['lastname'], userinfo['contact'], userinfo['email'], userinfo['username'])
+                accountsdata(userinfo['username'], userinfo['password'], userinfo['role'], userinfo['admin'], roleID(userinfo['role']), employeeID(userinfo['username']))
+               
+                session.pop('userinfo', None)
+
+                return redirect(url_for('login'))  
+        else:
+              
+                error = "Invalid OTP. Please try again."
+                return render_template('verify_otp.html', error=error)
+
+
+    return render_template('verify_otp.html')
 
 @app.route('/Products')
 def products():
