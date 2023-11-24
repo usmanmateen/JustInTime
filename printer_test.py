@@ -15,6 +15,13 @@ def filepath(filename):
     path = f"{os.path.dirname(os.path.abspath(__file__))}\\uploads\\{filename}"
     return path
 
+def linux_filepath(filename):
+    import subprocess
+    return f"{os.path.dirname(os.path.abspath(__file__))}/uploads/{filename}"
+
+
+
+
 
 def windows_printer(filename):
     try:
@@ -25,12 +32,15 @@ def windows_printer(filename):
         
 def linux_printer(filename,printer_name=None):
     import subprocess
+    file_path = linux_filepath(filename)
     try: 
-        if printer_name:
+        if printer_name != None:
+            
             # Specify a specific printer, use the lpr command with the printer name
-            subprocess.run(['lpr', '-P', printer_name, filepath(filename)])
+            subprocess.run(['lpr', '-P',printer_name, file_path ])
         else: # default Printer 
-            subprocess.run(['lpr', filepath(filename)])
+            path = f"upload/{filename}"
+            subprocess.run(['lpr', file_path])
 
         return "File sent to printer."
     except Exception as e:
@@ -39,7 +49,7 @@ def linux_printer(filename,printer_name=None):
 
 def doc_to_print(filename = None): ## Call the doc_to_print method which allows the user to printer. 
     machine_type = check_os()
-    
+    print(f"filename is {filename}")
     if filename == None or filename == " ":
         return "No File Given"
 
@@ -48,7 +58,9 @@ def doc_to_print(filename = None): ## Call the doc_to_print method which allows 
     
 
     if machine_type <= 0:
-        status = linux_printer(filepath)
+        status = linux_printer(filename)
+        print(linux_filepath(filename))  # Check the generated file path
+
 
     return status
 
@@ -143,3 +155,4 @@ def printer_status():
     
     return status
 
+print(doc_to_print("test.txt"))
