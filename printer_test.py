@@ -72,7 +72,7 @@ def linux_get_device_status():
     try: 
         # Specify a specific printer, use the lpr command with the printer name
         status = subprocess.run(['lpstat', '-p'], capture_output=True)
-        print(status)
+        
 
  
         return status
@@ -103,7 +103,6 @@ def cleanMac():
     output_list = [
     "CompletedProcess(args=['lpstat', '-p'], returncode=0, stdout=b'printer HP_DeskJet_2700_series is idle.  enabled since Sat 16 Sep 14:11:19 2023\\nprinter HP_DeskJet_2700_series__C8CAC9__20210331212431 is idle.  enabled since Fri  6 Jan 07:43:28 2023\\nprinter HP_DeskJet_3630_series is idle.  enabled since Wed 17 Mar 13:28:20 2021\\nprinter HP_DeskJet_3630_series_2 is idle.  enabled since Wed 31 Mar 21:25:12 2021\\n', stderr=b'')"
     ]
-
 
     output_string = output_list[0].split("stdout=b'")[1].split("', stderr=b'")[0]
     printer_statuses = output_string.split('\\n')
