@@ -1,0 +1,11 @@
++------------+------------------------------------------------------+
+| FLOOR MANAGER |                          Task                          |
++------------+------------------------------------------------------+
+| Monday     | 8 am - 6 pm (Floor planning)                           |
+| Tuesday    | 7 am - 5 pm (Floor oversight)                          |
+| Wednesday  | 7 am - 4 pm (Floor oversight, meetings)                |
+| Thursday   | 7 am - 4 pm (Floor oversight, meetings)                |
+| Friday     | 8 am - 6 pm (Floor planning)                           |
+| Saturday   | 8 am - 6 pm (Floor planning)                           |
+| Sunday     | 7 am - 5 pm (Floor oversight)                          |
++------------+------------------------------------------------------+

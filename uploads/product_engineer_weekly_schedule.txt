@@ -1,0 +1,11 @@
++------------+------------------------------------------------------+
+| PRODUCT ENGINEER |                          Task                          |
++------------+------------------------------------------------------+
+| Monday     | 9 am - 5 pm (Design tasks)                             |
+| Tuesday    | 9 am - 5 pm (Design tasks)                             |
+| Wednesday  | 9 am - 6 pm (Research and development)                 |
+| Thursday   | 9 am - 5 pm (Design tasks)                             |
+| Friday     | 9 am - 6 pm (Research and development)                 |
+| Saturday   | 10 am - 4 pm (Prototyping)                             |
+| Sunday     | 10 am - 4 pm (Prototyping)                             |
++------------+------------------------------------------------------+

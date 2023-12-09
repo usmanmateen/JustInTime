@@ -1,0 +1,11 @@
++------------+------------------------------------------------------+
+| PRODUCT OPERATIVE |                          Task                          |
++------------+------------------------------------------------------+
+| Monday     | 8 am - 4 pm (Production tasks)                         |
+| Tuesday    | 8 am - 4 pm (Production tasks)                         |
+| Wednesday  | 9 am - 4 pm (Product testing)                          |
+| Thursday   | 8 am - 5 pm (Inventory management)                     |
+| Friday     | 8 am - 4 pm (Production tasks)                         |
+| Saturday   | 8 am - 4 pm (Production tasks)                         |
+| Sunday     | 9 am - 4 pm (Product testing)                          |
++------------+------------------------------------------------------+

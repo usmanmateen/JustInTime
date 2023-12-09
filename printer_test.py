@@ -39,7 +39,7 @@ def linux_printer(filename,printer_name=None):
             # Specify a specific printer, use the lpr command with the printer name
             subprocess.run(['lpr', '-P',printer_name, file_path ])
         else: # default Printer 
-            path = f"upload/{filename}"
+            path = f"uploads/{filename}"
             subprocess.run(['lpr', file_path])
 
         return "File sent to printer."
@@ -47,7 +47,7 @@ def linux_printer(filename,printer_name=None):
         return e
 
 
-def doc_to_print(filename = None): ## Call the doc_to_print method which allows the user to printer. 
+def doc_to_print(filename = None): # Call the doc_to_print method which allows the user to printer. 
     machine_type = check_os()
     print(f"filename is {filename}")
     if filename == None or filename == " ":

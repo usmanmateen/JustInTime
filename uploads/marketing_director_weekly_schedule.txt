@@ -1,0 +1,11 @@
++------------+------------------------------------------------------+
+| MARKETING DIRECTOR |                          Task                          |
++------------+------------------------------------------------------+
+| Monday     | 11 am - 6 pm (Ad strategy development)                 |
+| Tuesday    | 9 am - 5 pm (Campaign planning)                        |
+| Wednesday  | 9 am - 5 pm (Campaign planning)                        |
+| Thursday   | 9 am - 5 pm (Campaign planning)                        |
+| Friday     | 9 am - 5 pm (Campaign planning)                        |
+| Saturday   | 11 am - 6 pm (Ad strategy development)                 |
+| Sunday     | 11 am - 6 pm (Ad strategy development)                 |
++------------+------------------------------------------------------+

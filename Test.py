@@ -392,7 +392,13 @@ def print(filename):
 
 
 
+@app.route ('/jobs', methods=['GET'])
+def job_allocations():
+    from job import job_allocation
+    job_allocation()
+    print("Jobs assigned")
 
+    return redirect(url_for('home'))
 
 def main():
     app.run(debug=True)

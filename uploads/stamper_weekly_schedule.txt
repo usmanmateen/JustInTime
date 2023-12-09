@@ -1,0 +1,11 @@
++------------+------------------------------------------------------+
+|    STAMPER    |                          Task                          |
++------------+------------------------------------------------------+
+| Monday     | 9 am - 3 pm (Stamping quality checks)                  |
+| Tuesday    | 7 am - 5 pm (Stamping oversight)                       |
+| Wednesday  | 9 am - 3 pm (Stamping quality checks)                  |
+| Thursday   | 8 am - 4 pm (Stamping duties)                          |
+| Friday     | 8 am - 4 pm (Stamping duties)                          |
+| Saturday   | 7 am - 5 pm (Stamping oversight)                       |
+| Sunday     | 8 am - 4 pm (Stamping duties)                          |
++------------+------------------------------------------------------+
