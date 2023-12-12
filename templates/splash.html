@@ -6,7 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to FloatFry</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='splash_styles.css') }}">
-    
+    <style>
+        .centered-table {
+          margin: 20px auto;
+          background-color: #ffffff;
+          width: 80%; 
+        }
+
+        .centered-table th,
+        .centered-table td {
+          padding: 10px;
+          text-align: center;
+          font-weight: bold; 
+          color: rgb(0, 0, 0); 
+        }
+
+        h2 {
+          margin-top: 20px;
+        }
+      </style>
 </head>
 <body>
     <header>
@@ -32,6 +50,45 @@
             <p>Over the years, we have consistently developed unique, family-oriented products, all while maintaining our core values of personalization and exclusivity. Our cookware is designed to meet the highest standards and is oven-safe, dishwasher-safe, and crafted from durable Titanium, making it scratch-resistant.</p>
             <p>FloatFry takes pride in its ability to cater to individual customer needs, allowing them to put their signature on our products. This personal touch has made our cookware some of the most prestigious and sought-after in the market.</p>
         </div>
+        
+                
+        <table border="3" class="centered-table">
+            <tr>
+                <th colspan="3">Demo Login Information:</th>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td>jack</td>
+                <td>jack</td>
+                <td>Admin</td>
+            </tr>
+        <tr>
+            <td>david</td>
+            <td>david</td>
+            <td>Floor Manager</td>
+        </tr>
+        <tr>
+            <td>edward</td>
+            <td>edward</td>
+            <td>Stamper</td>
+        </tr>
+        <tr>
+            <td>oscar</td>
+            <td>oscar</td>
+            <td>Product Engineer</td>
+        </tr>
+        <tr>
+            <td>john</td>
+            <td>john</td>
+            <td>Product Operative</td>
+        </tr>
+        </table>
+    
+
         
         <h1>Frequently Asked Questions</h1>
 
@@ -71,6 +128,7 @@
         });
     </script>
     
+
 </body>
 </html>
 

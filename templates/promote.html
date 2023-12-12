@@ -42,7 +42,7 @@
                         <td>{{ emp["Admin"] }}</td>
                         <td><a class="btn btn-sm btn-outline-success" href="{{ url_for('promotetoadmin', empid = emp['AccountsID']) }}"> PROMOTE</a></td>
                         <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('revoke', empid = emp['AccountsID']) }}"> REVOKE</a></td>
-                        <td><a class="btn btn-sm btn-outline-danger" href="{{ url_for('deleteuser', empid = emp['AccountsID']) }}">DELETE</a></td>
+                        <td><a class="btn btn-sm btn-outline-danger" href="#">DELETE</a></td>
                     </tr>
                 {% endfor %}    
             {% endif %}
